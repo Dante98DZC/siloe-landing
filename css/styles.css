@@ -2,246 +2,391 @@
    Reset y estilos globales
 ========================================= */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'Roboto', sans-serif;
-    line-height: 1.6;
-    background: #f7f7f7;
-    color: #333;
-  }
-  
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-  
-  /* Contenedor principal */
-  .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
-  
-  /* ========================================
-     Navbar
-  ========================================= */
-  .navbar {
-    background: #001f3f; /* Azul oscuro principal */
-    padding: 1rem 0;
-  }
-  
-  .nav-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .logo {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: #fff;
-  }
-  
-  .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 1.2rem;
-  }
-  
-  .nav-links li a {
-    color: #fff;
-    font-weight: 500;
-    transition: color 0.3s ease;
-  }
-  
-  .nav-links li a:hover {
-    color: #ffcc00;
-  }
-  
-  /* ========================================
-     Sección Hero
-  ========================================= */
-  .hero {
-    background: url('https://via.placeholder.com/1200x600') no-repeat center center/cover;
-    min-height: 60vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #4a90e2; /* Pastel blue */
+  --secondary-color: #61e9cc; /* Soft teal */
+  --background-color: #f0f4f8; /* Light pastel blue */
+  --text-color: #2c3e50; /* Darker blue for text */
+  --text-light-color: #7f8c8d; /* Light grey-blue for lighter text */
+  --white-color: #ffffff; /* Pure white */
+  --shadow-color: rgba(0, 0, 0, 0.1); /* Light shadow */
+  --overlay-color: rgba(74, 144, 226, 0.7); /* Semi-transparent pastel blue */
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  line-height: 1.6;
+  background: var(--background-color);
+  color: var(--text-color);
+  padding: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--secondary-color);
+}
+
+/* Contenedor principal */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* ========================================
+   Navbar
+========================================= */
+.navbar {
+  background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+  padding: 1rem 0;
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 2rem;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--white-color);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.2rem;
+}
+
+.nav-links li a {
+  color: var(--white-color);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: var(--secondary-color);
+}
+
+/* ========================================
+   Sección Hero
+========================================= */
+.hero {
+  background: url(../res/estampado.jpg) repeat center;
+  min-height: 80vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-block: 1rem;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--overlay-color);
+}
+
+.hero-content {
+  position: relative;
+  color: var(--white-color);
+  padding: 1.5rem;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Botón */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--white-color);
+    background: var(--primary-color);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+    background: var(--secondary-color);
+    transform: scale(1.05);
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+.fade-texts {
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
-  
-  .hero::before {
-    content: "";
+    height: 50px; /* Adjust based on your text height */
+}
+
+.fade-text {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    background: rgba(0, 31, 63, 0.7); /* Overlay azul oscuro */
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+/* ========================================
+    Animaciones
+========================================= */
+@keyframes fadeIn {
+  from {
+     opacity: 0;
   }
-  
-  .hero-content {
-    position: relative;
-    color: #fff;
-    padding: 1.5rem;
+  to {
+     opacity: 1;
   }
-  
-  .hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+}
+
+@keyframes slideIn {
+  from {
+     transform: translateY(100%);
   }
-  
-  .hero p {
-    font-size: 1.2rem;
-    margin-bottom: 1.5rem;
+  to {
+     transform: translateY(0);
   }
-  
-  /* Botón */
-  .btn {
-    display: inline-block;
-    background: #ffcc00;
-    color: #001f3f;
-    padding: 0.8rem 2rem;
-    border-radius: 4px;
-    transition: background 0.3s ease, transform 0.3s ease;
-    font-weight: 500;
-  }
-  
-  .btn:hover {
-    background: #e6b800;
-    transform: translateY(-2px);
-  }
-  
-  /* ========================================
-     Sección Servicios
-  ========================================= */
-  .servicios {
-    padding: 2rem 0;
-  }
-  
-  .servicios h2 {
-    text-align: center;
-    margin-bottom: 2rem;
-    font-size: 2rem;
-    color: #001f3f;
-  }
-  
+}
+
+.hero-content {
+  animation: fadeIn 2s ease-in-out;
+}
+
+.servicio-item {
+  animation: slideIn 1s ease-in-out;
+}
+
+.btn {
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+/* ========================================
+   Sección Servicios
+========================================= */
+.servicios {
+  padding: 2rem 0;
+}
+
+.servicios h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: var(--primary-color);
+}
+
+.servicios-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.servicio-item {
+  background: var(--white-color);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px var(--shadow-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.servicio-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 16px var(--shadow-color);
+}
+
+.servicio-item h3 {
+  margin-bottom: 0.8rem;
+  color: var(--primary-color);
+}
+
+/* ========================================
+   Sección Nosotros
+========================================= */
+.nosotros {
+  padding: 2rem 0;
+  background: var(--white-color);
+}
+
+.nosotros h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  color: var(--primary-color);
+}
+
+.nosotros p {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--text-light-color);
+  line-height: 1.8;
+}
+
+/* ========================================
+   Sección Galería
+========================================= */
+.galeria {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.galery {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 10px;
+}
+.galery img {
+  width: 0px;
+  height: 280px;
+  flex-grow: 1;
+  object-fit: cover;
+  transition: 0.8s ease;
+}
+
+.galery img:hover {
+  width: 60px;
+  /* opacity: 1; */
+  filter: contrast(110%);
+}
+/* ========================================
+   Sección FAQ
+========================================= */
+.faq {
+  padding: 2rem 0;
+  background: var(--white-color);
+}
+
+.faq h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: var(--primary-color);
+}
+
+.faq-item {
+  margin-bottom: 1.5rem;
+}
+
+.faq-item h3 {
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.faq-item p {
+  font-size: 1rem;
+  color: var(--text-light-color);
+}
+
+/* ========================================
+   Sección Contacto
+========================================= */
+.contacto {
+  padding: 2rem 0;
+  background: #f0f0f0;
+}
+
+.contacto h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  color: var(--primary-color);
+}
+
+.contacto p {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  color: var(--text-light-color);
+}
+
+/* Información de contacto */
+.contact-info {
+  text-align: center;
+  line-height: 1.8;
+  font-style: normal;
+  color: var(--text-color);
+}
+
+/* ========================================
+   Footer
+========================================= */
+footer {
+  background: var(--primary-color);
+  color: var(--white-color);
+  text-align: center;
+  padding: 1.2rem 0;
+  font-size: 0.9rem;
+}
+
+/* ========================================
+   Responsive (Tablet y Desktop)
+======================================== */
+@media (min-width: 768px) {
   .servicios-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    flex-direction: row;
+    justify-content: space-between;
   }
-  
+
   .servicio-item {
-    background: #fff;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-    text-align: center;
+    flex: 1;
+    margin: 0 0.5rem;
   }
-  
-  .servicio-item:hover {
-    transform: translateY(-5px);
+
+  .hero h1 {
+    font-size: 3rem;
   }
-  
-  .servicio-item h3 {
-    margin-bottom: 0.8rem;
-    color: #001f3f;
+
+  .hero p {
+    font-size: 1.5rem;
   }
-  
-  /* ========================================
-     Sección Nosotros
-  ========================================= */
-  .nosotros {
-    padding: 2rem 0;
-    background: #fff;
+
+  .testimonios-carousel {
+    flex-direction: row;
+    justify-content: space-between;
   }
-  
-  .nosotros h2 {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    font-size: 2rem;
-    color: #001f3f;
+
+  .testimonio-item {
+    flex: 1;
+    margin: 0 0.5rem;
   }
-  
-  .nosotros p {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-    font-size: 1.1rem;
-    color: #555;
-    line-height: 1.8;
-  }
-  
-  /* ========================================
-     Sección Contacto
-  ========================================= */
-  .contacto {
-    padding: 2rem 0;
-    background: #f0f0f0;
-  }
-  
-  .contacto h2 {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    font-size: 2rem;
-    color: #001f3f;
-  }
-  
-  .contacto p {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    font-size: 1.1rem;
-    color: #555;
-  }
-  
-  /* Información de contacto */
-  .contact-info {
-    text-align: center;
-    line-height: 1.8;
-    font-style: normal;
-    color: #333;
-  }
-  
-  /* ========================================
-     Footer
-  ========================================= */
-  footer {
-    background: #001f3f;
-    color: #fff;
-    text-align: center;
-    padding: 1.2rem 0;
-    font-size: 0.9rem;
-  }
-  
-  /* ========================================
-     Responsive (Tablet y Desktop)
-  ========================================= */
-  @media (min-width: 768px) {
-    .servicios-grid {
-      flex-direction: row;
-      justify-content: space-between;
-    }
-  
-    .servicio-item {
-      flex: 1;
-      margin: 0 0.5rem;
-    }
-  
-    .hero h1 {
-      font-size: 3rem;
-    }
-  
-    .hero p {
-      font-size: 1.5rem;
-    }
-  }
-  
+}

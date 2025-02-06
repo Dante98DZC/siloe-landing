@@ -8,15 +8,18 @@
 }
 
 :root {
-  --primary-color: #4a90e2; /* Pastel blue */
-  --secondary-color: #61e9cc; /* Soft teal */
-  --background-color: #f0f4f8; /* Light pastel blue */
-  --text-color: #2c3e50; /* Darker blue for text */
-  --text-light-color: #7f8c8d; /* Light grey-blue for lighter text */
+  --primary-color: #4a90e2; /* Calming blue */
+  --secondary-color: #50e3c2; /* Refreshing teal */
+  --background-color: #f5f7fa; /* Clean light grey */
+  --text-color: #34495e; /* Trustworthy dark blue */
+  --text-light-color: #7f8c8d; /* Neutral grey */
   --white-color: #ffffff; /* Pure white */
-  --shadow-color: rgba(0, 0, 0, 0.1); /* Light shadow */
-  --overlay-color: rgba(74, 144, 226, 0.7); /* Semi-transparent pastel blue */
-  --primary-gradient: linear-gradient(45deg, rgba(5, 236, 213, 0.7) , rgba(18, 137, 222, 0.7) );
+  --shadow-color: rgba(0, 0, 0, 0.1); /* Soft shadow */
+  --overlay-color: rgba(74, 144, 226, 0.7); /* Semi-transparent calming blue */
+  --primary-gradient: linear-gradient(45deg, rgba(80, 227, 194, 0.7), rgba(74, 144, 226, 0.7));
+  --accent-color: #f39c12; /* Energetic orange for accents */
+  --highlight-color: #e74c3c; /* Attention-grabbing red for highlights */
+  --background-alt-color: #ddf7fc; /* Light cyan for alternate backgrounds */
 }
 
 body {
@@ -49,16 +52,20 @@ a:hover {
    Navbar
 ========================================= */
 .navbar {
-  background: rgb(168, 240, 216);
-  padding: 0;
+  background: var(--primary-gradient);
+  padding: 1rem 2rem;
   box-shadow: 0 2px 4px var(--shadow-color);
 }
+
 
 .nav-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding-inline: 2rem;
+  border-radius: 100%; 
+  background-color: var(--background-alt-color); 
+  width: fit-content;
 }
 
 .logo {

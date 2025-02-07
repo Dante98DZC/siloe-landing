@@ -1,28 +1,29 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lavandería Siloé</title>
-    <link rel="shortcut icon" type="image" href="res/LogoSiloe.png"/>
-
+    <link rel="shortcut icon" type="image" href="res/LogoSiloe.png" />
     <link
       href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/styles.css" />
+    <!-- load jQuery -->
+    <script src="plugins/jquery/jquery-2.0.0.min.js"></script>
+    <!-- load Galleria -->
+    <script src="plugins/galleria/galleria-1.2.9.min.js"></script>
   </head>
+
   <body>
     <!-- Header: incluye navegación principal -->
     <header>
       <nav class="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">
-              <img
-                src="res/LogoSiloe.png"
-                alt="Siloé"
-              />
-            </a>
+          <a href="#" class="logo">
+            <img src="res/LogoSiloe.png" alt="Siloé" />
+          </a>
         </div>
       </nav>
     </header>
@@ -33,19 +34,21 @@
       <section class="hero">
         <div class="container hero-content">
           <h1>Lavandería Siloé</h1>
-        
-        <div class="fade-texts">
-            <p class="fade-text">Calidad, rapidez y elegancia en cada lavado.</p>
+
+          <div class="fade-texts">
+            <p class="fade-text">
+              Calidad, rapidez y elegancia en cada lavado.
+            </p>
             <p class="fade-text">Servicio de lavandería a domicilio.</p>
             <p class="fade-text">Limpieza en seco para prendas delicadas.</p>
-        </div>
+          </div>
 
           <a href="#contacto" class="btn">Contáctanos</a>
         </div>
       </section>
 
       <!-- Sección Servicios con tarjetas -->
-      <section id="servicios" class="servicios">
+      <section class="servicios">
         <div class="container">
           <h2>Nuestros Servicios</h2>
           <div class="servicios-grid">
@@ -68,7 +71,7 @@
       </section>
 
       <!-- Sección Nosotros -->
-      <section id="nosotros" class="nosotros">
+      <section class="nosotros">
         <div class="container">
           <h2>Sobre Nosotros</h2>
           <p>
@@ -79,18 +82,18 @@
       </section>
 
       <!-- Sección Galería -->
-      <section id="galeria" class="galeria">
-        <div class="galery">
-          <img src="res/LogoSiloe.png" alt="" />
-          <img src="res/1.jpg" alt="" />
+      <section class="galleria">
+        <div id="galleria">
           <img src="res/2.jpg" alt="" />
           <img src="res/3.jpg" alt="" />
+          <img src="res/1.jpg" alt="" />
+          <img src="res/5.jpg" alt="" />
           <img src="res/4.jpg" alt="" />
         </div>
       </section>
 
       <!-- Sección FAQ -->
-      <section id="faq" class="faq">
+      <section class="faq">
         <div class="container">
           <h2>Preguntas Frecuentes</h2>
           <div class="faq-item">
@@ -112,7 +115,7 @@
       </section>
 
       <!-- Sección Contacto -->
-      <section id="contacto" class="contacto">
+      <section class="contacto">
         <div class="container">
           <h2>Contacto</h2>
           <p>
@@ -134,4 +137,10 @@
     </footer>
   </body>
   <script src="js/script.js"></script>
+  <script>
+    // Load the classic theme
+    Galleria.loadTheme("plugins/galleria/galleria.classic.min.js");
+    // Initialize Galleria
+    Galleria.run("#galleria");
+  </script>
 </html>

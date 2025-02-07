@@ -16,7 +16,11 @@
   --white-color: #ffffff; /* Pure white */
   --shadow-color: rgba(0, 0, 0, 0.1); /* Soft shadow */
   --overlay-color: rgba(74, 144, 226, 0.7); /* Semi-transparent calming blue */
-  --primary-gradient: linear-gradient(45deg, rgba(80, 227, 194, 0.7), rgba(74, 144, 226, 0.7));
+  --primary-gradient: linear-gradient(
+    45deg,
+    rgba(80, 227, 194, 0.7),
+    rgba(74, 144, 226, 0.7)
+  );
   --accent-color: #f39c12; /* Energetic orange for accents */
   --highlight-color: #e74c3c; /* Attention-grabbing red for highlights */
   --background-alt-color: #ddf7fc; /* Light cyan for alternate backgrounds */
@@ -28,6 +32,10 @@ body {
   background: var(--background-color);
   color: var(--text-color);
   padding: 1rem;
+}
+
+section{
+  padding: 2rem 0;
 }
 
 a {
@@ -53,26 +61,23 @@ a:hover {
 ========================================= */
 .navbar {
   background: var(--primary-gradient);
-  padding: 1rem 2rem;
   box-shadow: 0 2px 4px var(--shadow-color);
+  padding: 0.5rem;
 }
-
 
 .nav-container {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-inline: 2rem;
-  border-radius: 100%; 
-  background-color: var(--background-alt-color); 
+  border-radius: 100%;
+  background-color: var(--background-alt-color);
   width: fit-content;
+  padding: 0.2rem;
 }
 
 .logo {
   color: var(--white-color);
 }
-.logo img{
-  height: 8rem;
+.logo img {
+  height: 6rem;
 }
 
 .nav-links {
@@ -136,55 +141,55 @@ a:hover {
 
 /* Botón */
 .btn {
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: var(--white-color);
-    background: var(--overlay-color);
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--white-color);
+  background: var(--overlay-color);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .btn:hover {
-    color: var(--white-color);
-    background: var(--primary-color);
-    transform: scale(1.1);
+  color: var(--white-color);
+  background: var(--primary-color);
+  transform: scale(1.1);
 }
 
 .fade-texts {
-    position: relative;
-    height: 80px; /* Adjust based on your text height */
+  position: relative;
+  height: 80px; /* Adjust based on your text height */
 }
 
 .fade-text {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
 }
 /* ========================================
     Animaciones
 ========================================= */
 @keyframes fadeIn {
   from {
-     opacity: 0;
+    opacity: 0;
   }
   to {
-     opacity: 1;
+    opacity: 1;
   }
 }
 
 @keyframes slideIn {
   from {
-     transform: translateY(100%);
+    transform: translateY(100%);
   }
   to {
-     transform: translateY(0);
+    transform: translateY(0);
   }
 }
 
@@ -203,10 +208,6 @@ a:hover {
 /* ========================================
    Sección Servicios
 ========================================= */
-.servicios {
-  padding: 2rem 0;
-}
-
 .servicios h2 {
   text-align: center;
   margin-bottom: 2rem;
@@ -266,37 +267,16 @@ a:hover {
 /* ========================================
    Sección Galería
 ========================================= */
-.galeria {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  margin: 1rem 0;
-  background-color: var(--white-color);
+.galleria{
+  display: block;
 }
 
-.galery {
-  display: flex;
-  width: 75svw;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  border-radius: 10px;
-  margin-block: 8px;
-}
-.galery img {
-  width: 0px;
-  height: 280px;
-  flex-grow: 1;
-  object-fit: cover;
-  transition: 0.8s ease;
+#galleria {
+  height: 25rem;
+  background: var(--text-light-color);
 }
 
-.galery img:hover {
-  width: 60px;
-  /* opacity: 1; */
-  filter: contrast(110%);
-}
+
 /* ========================================
    Sección FAQ
 ========================================= */

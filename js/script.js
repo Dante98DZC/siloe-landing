@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const texts = document.querySelectorAll(".fade-text");
+  const texts = document.querySelectorAll(".fade-texts p");
   let index = 0;
 
   function showNextText() {

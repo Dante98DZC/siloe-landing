@@ -34,7 +34,7 @@ body {
   padding: 1rem;
 }
 
-section{
+section {
   padding: 2rem 0;
 }
 
@@ -60,48 +60,43 @@ a:hover {
    Navbar
 ========================================= */
 .navbar {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
   background: var(--primary-gradient);
   box-shadow: 0 2px 4px var(--shadow-color);
-  padding: 0.5rem;
+  padding: 0.5rem 2rem;
 }
 
 .nav-container {
   display: flex;
-  border-radius: 100%;
-  background-color: var(--background-alt-color);
+  justify-content: center;
+  align-items: center;
   width: fit-content;
-  padding: 0.2rem;
 }
 
 .logo {
-  color: var(--white-color);
+  background-color: var(--background-alt-color);
+  border-radius: 100%;
+
+  padding: 0.5rem;
 }
 .logo img {
   height: 6rem;
 }
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 1.2rem;
-}
-
-.nav-links li a {
+.tag-line {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
   color: var(--white-color);
-  font-weight: 500;
-  transition: color 0.3s ease;
+  font-size: 1.4rem;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
 }
-
-.nav-links li a:hover {
-  color: var(--secondary-color);
-}
-
 /* ========================================
    Sección Hero
 ========================================= */
 .hero {
   background: url(../res/estampado.jpg) repeat center;
-  min-height: 75svh;
+  min-height: 80svh;
   position: relative;
   display: flex;
   align-items: center;
@@ -135,6 +130,7 @@ a:hover {
 }
 
 .hero p {
+  color: var(--text-color);
   font-size: 1.2rem;
   margin-bottom: 1.5rem;
 }
@@ -267,7 +263,7 @@ a:hover {
 /* ========================================
    Sección Galería
 ========================================= */
-.galleria{
+.galleria {
   display: block;
 }
 
@@ -275,7 +271,6 @@ a:hover {
   height: 25rem;
   background: var(--text-light-color);
 }
-
 
 /* ========================================
    Sección FAQ

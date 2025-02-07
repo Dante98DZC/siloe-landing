@@ -8,22 +8,22 @@
 }
 
 :root {
-  --primary-color: #4a90e2; /* Calming blue */
-  --secondary-color: #50e3c2; /* Refreshing teal */
-  --background-color: #f5f7fa; /* Clean light grey */
-  --text-color: #34495e; /* Trustworthy dark blue */
-  --text-light-color: #7f8c8d; /* Neutral grey */
-  --white-color: #ffffff; /* Pure white */
-  --shadow-color: rgba(0, 0, 0, 0.1); /* Soft shadow */
-  --overlay-color: rgba(74, 144, 226, 0.7); /* Semi-transparent calming blue */
+  --primary-color: #4a90e2;
+  --secondary-color: #50e3c2;
+  --background-color: #f5f7fa;
+  --text-color: #34495e;
+  --text-light-color: #7f8c8d;
+  --white-color: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --overlay-color: rgba(74, 144, 226, 0.7);
   --primary-gradient: linear-gradient(
     45deg,
     rgba(80, 227, 194, 0.7),
     rgba(74, 144, 226, 0.7)
   );
-  --accent-color: #f39c12; /* Energetic orange for accents */
-  --highlight-color: #e74c3c; /* Attention-grabbing red for highlights */
-  --background-alt-color: #ddf7fc; /* Light cyan for alternate backgrounds */
+  --accent-color: #f39c12;
+  --highlight-color: #e74c3c;
+  --background-alt-color: #ddf7fc;
 }
 
 body {
@@ -31,25 +31,10 @@ body {
   line-height: 1.6;
   background: var(--background-color);
   color: var(--text-color);
-  padding: 1rem;
+  padding: 0 2rem;
 }
 
-section {
-  padding: 0.5rem 0;
-  margin: 0.5rem 0;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-  transition: color 0.3s ease;
-}
-
-a:hover {
-  color: var(--secondary-color);
-}
-
-/* Contenedor principal */
+/* Contenedor central */
 .container {
   width: 90%;
   max-width: 1200px;
@@ -63,50 +48,54 @@ a:hover {
 .navbar {
   display: flex;
   justify-content: space-between;
-  flex-wrap: nowrap;
+  align-items: center;
   background: var(--primary-gradient);
+  padding: 1rem 2rem;
   box-shadow: 0 2px 4px var(--shadow-color);
-  padding: 0.5rem 2rem;
-  gap: 1rem;
+  margin-bottom: 0rem;
 }
 
 .nav-container {
   display: flex;
-  justify-content: center;
   align-items: center;
-  width: fit-content;
 }
 
 .logo {
   background-color: var(--white-color);
-  border-radius: 100%;
-
+  border-radius: 50%;
   padding: 0.5rem;
 }
+
 .logo img {
-  height: 6rem;
+  height: 60px;
+  width: auto;
 }
+
+.tagline-container {
+  margin-left: 1rem;
+}
+
 .tag-line {
-  font-family: "Roboto", sans-serif;
+  font-size: 1.4rem;
   font-weight: 400;
   color: var(--white-color);
-  font-size: 1.4rem;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
 }
+
 /* ========================================
    Sección Hero
 ========================================= */
 .hero {
-  background: url(../res/estampado.jpg) repeat center;
-  min-height: 80svh;
   position: relative;
+  background: url("../res/estampado.jpg") repeat center;
+  min-height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   border-radius: 8px;
   overflow: hidden;
-  margin: 0.4rem 0;
+  margin: 1rem 0 2rem 0;
 }
 
 .hero::before {
@@ -116,29 +105,38 @@ a:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--primary-gradient);
+  background: var(--overlay-color);
 }
 
 .hero-content {
   position: relative;
   color: var(--white-color);
-  padding: 1.5rem;
+  padding: 2rem;
+  animation: fadeIn 2s ease-in-out;
 }
 
 .hero h1 {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   margin-bottom: 1rem;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
 }
 
-.hero p {
-  color: var(--text-color);
-  font-size: 1.2rem;
-  margin-bottom: 1.5rem;
+.fade-texts {
+  position: relative;
+  height: 80px;
+  margin: 1rem 0;
 }
 
-/* Botón */
-.btn {
+.fade-texts p {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.hero .btn {
   display: inline-block;
   padding: 0.75rem 1.5rem;
   font-size: 1.4rem;
@@ -151,81 +149,36 @@ a:hover {
   transition: background 0.3s ease, transform 0.3s ease;
 }
 
-.btn:hover {
-  color: var(--white-color);
+.hero .btn:hover {
   background: var(--primary-color);
-  transform: scale(1.1);
-}
-
-.fade-texts {
-  position: relative;
-  height: 80px; /* Adjust based on your text height */
-}
-
-.fade-texts p {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-/* ========================================
-    Animaciones
-========================================= */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slideIn {
-  from {
-    transform: translateY(100%);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-.hero-content {
-  animation: fadeIn 2s ease-in-out;
-}
-
-.servicio-item {
-  animation: slideIn 1s ease-in-out;
-}
-
-.btn {
-  animation: fadeIn 1.5s ease-in-out;
+  transform: scale(1.05);
 }
 
 /* ========================================
    Sección Servicios
 ========================================= */
-.servicios{
-  margin: 0 0 5rem 0;
+.servicios {
+  background: var(--white-color);
+  padding: 3rem 0;
+  margin-bottom: 2rem;
 }
 
 .servicios h2 {
-  margin-bottom: 1rem;
   text-align: center;
-  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-size: 2.2rem;
   color: var(--primary-color);
 }
 
 .servicios-grid {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .servicio-item {
-  background: var(--white-color);
-  padding: 1.5rem;
+  background: var(--background-alt-color);
+  padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 2px 8px var(--shadow-color);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -240,6 +193,7 @@ a:hover {
 .servicio-item h3 {
   margin-bottom: 0.8rem;
   color: var(--primary-color);
+  font-size: 1.8rem;
 }
 
 /* ========================================
@@ -247,12 +201,14 @@ a:hover {
 ========================================= */
 .nosotros {
   background: var(--white-color);
+  padding: 3rem 0;
+  margin-bottom: 2rem;
 }
 
 .nosotros h2 {
   text-align: center;
-  margin-bottom: 1.5rem;
-  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-size: 2.2rem;
   color: var(--primary-color);
 }
 
@@ -260,7 +216,7 @@ a:hover {
   max-width: 800px;
   margin: 0 auto;
   text-align: center;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: var(--text-light-color);
   line-height: 1.8;
 }
@@ -268,13 +224,15 @@ a:hover {
 /* ========================================
    Sección Galería
 ========================================= */
-.galleria {
-  display: block;
+.galleria{
+  margin-bottom: 2rem;
 }
 
 #galleria {
-  height: 25rem;
-  background: var(--text-light-color);
+  height: 30rem;
+  background: var(--overlay-color);
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 /* ========================================
@@ -282,28 +240,32 @@ a:hover {
 ========================================= */
 .faq {
   background: var(--white-color);
+  padding: 1rem 0;
+  margin-bottom: 2rem;
 }
 
 .faq h2 {
   text-align: center;
   margin-bottom: 2rem;
-  font-size: 2rem;
+  font-size: 2.2rem;
   color: var(--primary-color);
 }
 
 .faq-item {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
 }
 
 .faq-item h3 {
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   color: var(--primary-color);
   margin-bottom: 0.5rem;
 }
 
 .faq-item p {
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: var(--text-light-color);
+  line-height: 1.6;
 }
 
 /* ========================================
@@ -311,7 +273,31 @@ a:hover {
 ========================================= */
 .normas {
   background: var(--white-color);
-  padding: 2rem;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.normas h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2.2rem;
+  color: var(--primary-color);
+}
+
+.normas ol {
+  list-style: decimal inside;
+  line-height: 1.8;
+  color: var(--text-color);
+  font-size: 1.1rem;
+}
+
+.normas li {
+  margin-bottom: 1.5rem;
+}
+
+.normas li strong {
+  margin-bottom: 0.3rem;
+  color: var(--primary-color);
 }
 
 /* ========================================
@@ -319,27 +305,27 @@ a:hover {
 ========================================= */
 .contacto {
   background: var(--white-color);
+  padding: 3rem 0;
 }
 
 .contacto h2 {
   text-align: center;
-  margin-bottom: 1.5rem;
-  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-size: 2.2rem;
   color: var(--primary-color);
 }
 
 .contacto p {
   text-align: center;
-  margin-bottom: 1.5rem;
-  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
   color: var(--text-light-color);
 }
 
-/* Información de contacto */
 .contact-info {
   text-align: center;
   line-height: 1.8;
-  font-style: normal;
+  font-size: 1.1rem;
   color: var(--text-color);
 }
 
@@ -350,38 +336,32 @@ footer {
   background: var(--primary-color);
   color: var(--white-color);
   text-align: center;
-  padding: 1.2rem 0;
-  font-size: 0.9rem;
+  padding: 1.5rem 0;
+  font-size: 0.95rem;
+  margin-top: 2rem;
+}
+
+/* ========================================
+   Animaciones
+========================================= */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* ========================================
    Responsive (Tablet y Desktop)
-======================================== */
+========================================= */
 @media (min-width: 768px) {
   .servicios-grid {
     flex-direction: row;
     justify-content: space-between;
   }
-
   .servicio-item {
-    flex: 1;
-    margin: 0 0.5rem;
-  }
-
-  .hero h1 {
-    font-size: 3rem;
-  }
-
-  .hero p {
-    font-size: 1.5rem;
-  }
-
-  .testimonios-carousel {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  .testimonio-item {
     flex: 1;
     margin: 0 0.5rem;
   }

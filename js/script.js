@@ -8,6 +8,38 @@ $(document).ready(function () {
         localStorage.setItem('currentIndex', index);
     }
 
+    function saveImagesToLocalStorage() {
+        images.each(function (index, img) {
+            let imgSrc = $(img).attr('src');
+            fetch(imgSrc)
+                .then(response => response.blob())
+                .then(blob => {
+                    let reader = new FileReader();
+                    reader.onloadend = function () {
+                        localStorage.setItem('image' + index, reader.result);
+                    };
+                    reader.readAsDataURL(blob);
+                });
+        });
+    }
+
+    function loadImagesFromLocalStorage() {
+        images.each(function (index, img) {
+            let storedImage = localStorage.getItem('image' + index);
+            if (storedImage) {
+                $(img).attr('src', storedImage);
+            }
+        });
+    }
+
+    // Save images to localStorage if not already saved
+    if (!localStorage.getItem('imagesSaved')) {
+        saveImagesToLocalStorage();
+        localStorage.setItem('imagesSaved', 'true');
+    } else {
+        loadImagesFromLocalStorage();
+    }
+
     let cachedIndex = localStorage.getItem('currentIndex');
     if (cachedIndex) {
         currentIndex = parseInt(cachedIndex);

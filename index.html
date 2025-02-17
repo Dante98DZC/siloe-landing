@@ -13,7 +13,8 @@
     <!-- Cargar jQuery -->
     <script src="plugins/jquery/jquery-2.0.0.min.js"></script>
     <!-- Cargar Galleria -->
-    <script src="plugins/galleria/galleria-1.2.9.min.js"></script>
+    <!-- <script src="plugins/galleria/galleria-1.2.9.min.js"></script> -->
+    <script src="js/script.js"></script>
   </head>
 
   <body>
@@ -62,14 +63,20 @@
 
             <article class="servicio-item">
               <!-- <img src="res/complementos.jpg" alt="Complementos Adicionales" /> -->
-              <h3>Complementos Adicionales</h3>
+              <h3>Extra Detergente</h3>
               <div class="price">$100</div>
-              <p>Suavizantes y perlas de olor para un resultado excepcional.</p>
+              <p>Una taza de Detergente adicional para un mejor acabado.</p>
+            </article>
+            <article class="servicio-item">
+              <!-- <img src="res/complementos.jpg" alt="Complementos Adicionales" /> -->
+              <h3>Suavisante</h3>
+              <div class="price">$200</div>
+              <p>Incluir un suavisante para un resultado exepcional.</p>
             </article>
             <article class="servicio-item">
               <!-- <img src="res/domicilio.jpg" alt="Servicio a Domicilio" /> -->
               <h3>Servicio a Domicilio</h3>
-              <!-- <div class="price">$200</div> -->
+              <!-- <div class="price">?</div> -->
               <p>Recogemos y entregamos tus prendas en la puerta de tu casa.</p>
             </article>
           </div>
@@ -97,12 +104,14 @@
 
       <!-- Sección Galería -->
       <section class="galleria">
-        <div id="galleria">
+        <div class="gallery">
+          <button class="nav-btn prev">&#10094;</button>
           <img src="res/2.jpg" />
           <img src="res/3.jpg" />
           <img src="res/1.jpg" />
           <img src="res/5.jpg" />
           <img src="res/4.jpg" />
+          <button class="nav-btn next">&#10095;</button>
         </div>
       </section>
 
@@ -226,13 +235,6 @@
               </p>
             </li>
             <li>
-              <strong>Política de pérdida o daño de prendas:</strong>
-              <p>
-                En caso de extravío o daño comprobado, la compensación máxima
-                será equivalente al costo del servicio.
-              </p>
-            </li>
-            <li>
               <strong>Atención con respeto y cortesía:</strong>
               <p>
                 Solicitamos a nuestros clientes mantener un trato respetuoso
@@ -249,14 +251,40 @@
         <div class="container">
           <h2>Contacto</h2>
           <p>
-            Para más información, contáctanos a través de WhatsApp, SMS o llámanos al
+            Para más información, contáctanos a través de WhatsApp, SMS o
+            llámanos al
             <strong>+53 50108881</strong>.
           </p>
-          <div class="contact-info">
-            <p><strong>Teléfono:</strong> +53 50108881</p>
-            <p>
-              <strong>Dirección:</strong> Calle 13 %18 y 28, #127, Pueblo Nuevo.
-            </p>
+
+          <div class="contact-buttons">
+            <a href="https://wa.me/5350108881" class="contact-btn">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="50"
+                height="50"
+                fill="Green"
+                class="bi bi-whatsapp"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"
+                />
+              </svg>
+            </a>
+            <a href="tel:+5350108881" class="contact-btn">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="50"
+                height="50"
+                fill="Black"
+                class="bi bi-telephone"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"
+                />
+              </svg>
+            </a>
           </div>
         </div>
       </section>
@@ -269,8 +297,8 @@
 
     <script>
       // Inicializar Galleria con el tema Classic
-      Galleria.loadTheme("plugins/galleria/galleria.classic.min.js");
-      Galleria.run("#galleria");
+      // Galleria.loadTheme("plugins/galleria/galleria.classic.min.js");
+      // Galleria.run("#galleria");
 
       // Animación de textos en la sección Hero
       document.addEventListener("DOMContentLoaded", function () {

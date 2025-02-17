@@ -1,5 +1,5 @@
 /* ========================================
-   Reset y estilos globales
+   Reset and Global Styles
 ========================================= */
 * {
   margin: 0;
@@ -8,17 +8,17 @@
 }
 
 :root {
-  --primary-color: #3498db; /* Blue: Trust, professionalism */
-  --secondary-color: #2ecc71; /* Green: Growth, harmony */
-  --background-color: #ecf0f1; /* Light gray: Clean, simplicity */
-  --text-color: #2c3e50; /* Dark gray: Stability, readability */
-  --text-light-color: #95a5a6; /* Gray: Neutral, balance */
-  --white-color: #ffffff; /* White: Purity, minimalism */
-  --shadow-color: rgba(0, 0, 0, 0.1); /* Light shadow: Subtle depth */
-  --overlay-color: rgba(52, 152, 219, 0.7); /* Blue overlay: Calm, focus */
-  --accent-color: #e67e22; /* Orange: Energy, enthusiasm */
-  --highlight-color: #e74c3c; /* Red: Attention, urgency */
-  --background-alt-color: #bdc3c7; /* Light gray: Alternative background */
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --background-color: #ecf0f1;
+  --text-color: #2c3e50;
+  --text-light-color: #95a5a6;
+  --white-color: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --overlay-color: rgba(52, 152, 219, 0.7);
+  --accent-color: #e67e22;
+  --highlight-color: #e74c3c;
+  --background-alt-color: #bdc3c7;
 
   /* Additional colors */
   --md-blue: #2196f3;
@@ -36,8 +36,16 @@
   --gradient-1: linear-gradient(45deg, #4a90e2, #50e3c2);
   --gradient-2: linear-gradient(45deg, #2196f3, #9c27b0);
   --gradient-3: linear-gradient(45deg, #009688, #00bcd4);
-  --overlay-gradient-1: linear-gradient(45deg,rgba(80, 227, 194, 0.7),rgba(74, 144, 226, 0.7));
-  --overlay-gradient-2: linear-gradient(45deg, rgba(33, 150, 243, 0.7), rgba(156, 39, 176, 0.7));
+  --overlay-gradient-1: linear-gradient(
+    45deg,
+    rgba(80, 227, 194, 0.7),
+    rgba(74, 144, 226, 0.7)
+  );
+  --overlay-gradient-2: linear-gradient(
+    45deg,
+    rgba(33, 150, 243, 0.7),
+    rgba(156, 39, 176, 0.7)
+  );
 }
 
 body {
@@ -45,14 +53,12 @@ body {
   line-height: 1.6;
   background: var(--background-color);
   color: var(--text-color);
-  padding: 0;
 }
 
-section{
-  margin: 1rem 1rem;
+section {
+  margin: 1rem;
 }
 
-/* Contenedor central */
 .container {
   width: 90%;
   max-width: 1200px;
@@ -68,8 +74,14 @@ section{
   justify-content: space-between;
   align-items: center;
   background: var(--overlay-gradient-1);
-  padding: .4rem 1rem;
+  padding: 0.4rem 1rem;
   box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+@media (min-width: 1024px) {
+  .navbar {
+    padding: 1rem 2rem;
+  }
 }
 
 .nav-container {
@@ -100,7 +112,7 @@ section{
 }
 
 /* ========================================
-   Sección Hero
+   Hero Section
 ========================================= */
 .hero {
   position: relative;
@@ -121,7 +133,7 @@ section{
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--overlay-gradient-1)
+  background: var(--overlay-gradient-1);
 }
 
 .hero-content {
@@ -137,15 +149,33 @@ section{
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
 }
 
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero h1 {
+    font-size: 3.5rem;
+  }
+}
+
 .fade-texts {
   position: relative;
   height: 70px;
   margin-bottom: 3rem;
 }
 
+@media (max-width: 768px) {
+  .fade-texts {
+    margin-bottom: 2rem;
+  }
+}
+
 .fade-texts p {
   position: absolute;
-  font-size: 1.4rem;
+  font-size: 2rem;
   top: 0;
   left: 0;
   width: 100%;
@@ -153,9 +183,22 @@ section{
   transition: opacity 1s ease-in-out;
 }
 
+@media (max-width: 768px) {
+  .fade-texts p {
+    font-size: 1.8rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .fade-texts p {
+    font-size: 2.5rem;
+  }
+}
+
 .hero .btn {
   display: inline-block;
   padding: 0.75rem 1.5rem;
+  margin-bottom: 2rem;
   font-size: 1.4rem;
   font-weight: 600;
   color: var(--white-color);
@@ -163,6 +206,7 @@ section{
   border: none;
   border-radius: 50px;
   cursor: pointer;
+  text-decoration: none;
   transition: background 0.3s ease, transform 0.3s ease;
 }
 
@@ -171,13 +215,26 @@ section{
   transform: scale(1.05);
 }
 
+@media (max-width: 768px) {
+  .hero .btn {
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero .btn {
+    font-size: 1.6rem;
+    padding: 1rem 2rem;
+  }
+}
+
 /* ========================================
-   Sección Servicios
+   Services Section
 ========================================= */
 .servicios {
   background: var(--background-color);
   padding-bottom: 2rem;
-  display: block;
 }
 
 .servicios h2 {
@@ -191,7 +248,14 @@ section{
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  padding: 0;
+}
+
+@media (min-width: 1024px) {
+  .servicios-grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
 }
 
 .servicio-item {
@@ -200,8 +264,21 @@ section{
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 2px 8px var(--shadow-color);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
   text-align: center;
+}
+
+@media (max-width: 768px) {
+  .servicio-item {
+    padding: 0.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .servicio-item {
+    flex: 1 1 calc(33.333% - 2rem);
+    padding: 1.5rem;
+  }
 }
 
 .servicio-item:hover {
@@ -215,36 +292,79 @@ section{
   font-size: 1.6rem;
 }
 
+@media (max-width: 768px) {
+  .servicio-item h3 {
+    font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .servicio-item h3 {
+    font-size: 1.8rem;
+  }
+}
+
 .servicio-item p {
   color: var(--text-color);
   font-size: 1.2rem;
 }
 
-.price{
+@media (max-width: 768px) {
+  .servicio-item p {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .servicio-item p {
+    font-size: 1.4rem;
+  }
+}
+
+.price {
   position: absolute;
   top: -25px;
   right: -25px;
   display: flex;
   font-size: 1.2rem;
   font-weight: 600;
-  rotate: 35deg;
+  transform: rotate(35deg);
   background: rgba(9, 161, 133, 0.9);
   color: var(--white-color);
-  border-radius: 100%;
+  border-radius: 50%;
   width: 70px;
   height: 70px;
   align-items: center;
   justify-content: center;
-  transition: all ease .5s;
+  transition: all 0.5s ease;
 }
 
-.price:hover{
+@media (max-width: 768px) {
+  .price {
+    width: 50px;
+    height: 50px;
+    top: -15px;
+    right: -15px;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+}
+
+@media (min-width: 1024px) {
+  .price {
+    width: 80px;
+    height: 80px;
+    font-size: 1.4rem;
+  }
+}
+
+.price:hover {
   font-size: 1.3rem;
-  transform: rotate(-35deg);
+  transform: rotate(0deg);
 }
 
 /* ========================================
-   Sección Nosotros
+   About Us Section
 ========================================= */
 .nosotros {
   display: none;
@@ -269,7 +389,7 @@ section{
 }
 
 /* ========================================
-   Sección Galería
+   Gallery Section
 ========================================= */
 #galleria {
   height: 30rem;
@@ -279,7 +399,7 @@ section{
 }
 
 /* ========================================
-   Sección FAQ
+   FAQ Section
 ========================================= */
 .faq {
   background: var(--white-color);
@@ -305,14 +425,38 @@ section{
   margin-bottom: 0.5rem;
 }
 
+@media (max-width: 768px) {
+  .faq-item summary {
+    font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .faq-item summary {
+    font-size: 1.8rem;
+  }
+}
+
 .faq-item p {
   font-size: 1.1rem;
   color: var(--text-light-color);
   line-height: 1.6;
 }
 
+@media (max-width: 768px) {
+  .faq-item p {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .faq-item p {
+    font-size: 1.2rem;
+  }
+}
+
 /* ========================================
-   Sección Normas
+   Rules Section
 ========================================= */
 .normas {
   background: var(--white-color);
@@ -333,8 +477,32 @@ section{
   font-size: 1.1rem;
 }
 
+@media (max-width: 768px) {
+  .normas ol {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .normas ol {
+    font-size: 1.2rem;
+  }
+}
+
 .normas li {
   margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .normas li {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .normas li {
+    margin-bottom: 2rem;
+  }
 }
 
 .normas li strong {
@@ -343,7 +511,7 @@ section{
 }
 
 /* ========================================
-   Sección Contacto
+   Contact Section
 ========================================= */
 .contacto {
   background: var(--white-color);
@@ -357,11 +525,35 @@ section{
   color: var(--primary-color);
 }
 
+@media (max-width: 768px) {
+  .contacto h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .contacto h2 {
+    font-size: 2.4rem;
+  }
+}
+
 .contacto p {
   text-align: center;
   margin-bottom: 2rem;
   font-size: 1.2rem;
   color: var(--text-light-color);
+}
+
+@media (max-width: 768px) {
+  .contacto p {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .contacto p {
+    font-size: 1.4rem;
+  }
 }
 
 .contact-buttons {
@@ -371,10 +563,30 @@ section{
   margin-top: 20px;
 }
 
+@media (min-width: 1024px) {
+  .contact-buttons {
+    gap: 4rem;
+  }
+}
+
 .contact-btn {
   display: inline-block;
   width: 50px;
   height: 50px;
+}
+
+@media (max-width: 768px) {
+  .contact-btn {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .contact-btn {
+    width: 60px;
+    height: 60px;
+  }
 }
 
 .contact-btn img {
@@ -394,8 +606,20 @@ footer {
   font-size: 0.95rem;
 }
 
+@media (max-width: 768px) {
+  footer {
+    font-size: 0.85rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  footer {
+    font-size: 1rem;
+  }
+}
+
 /* ========================================
-   Animaciones
+   Animations
 ========================================= */
 @keyframes fadeIn {
   from {
@@ -407,85 +631,7 @@ footer {
 }
 
 /* ========================================
-   Responsive (Tablet y Desktop)
-========================================= */
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .hero h1 {
-    font-size: 2rem;
-  }
-
-  .hero .btn {
-    font-size: 1.2rem;
-    padding: 0.5rem 1rem;
-  }
-
-  .servicios-grid {
-    flex-direction: column;
-  }
-
-  .servicio-item {
-    padding: 0.5rem;
-  }
-
-  .servicio-item h3 {
-    font-size: 1.4rem;
-  }
-
-  .servicio-item p {
-    font-size: 1rem;
-  }
-
-  .price {
-    width: 50px;
-    height: 50px;
-    font-size: 1rem;
-  }
-
-  .faq-item summary {
-    font-size: 1.4rem;
-  }
-
-  .faq-item p {
-    font-size: 1rem;
-  }
-
-  .normas ol {
-    font-size: 1rem;
-  }
-
-  .normas li {
-    margin-bottom: 1rem;
-  }
-
-  .contacto h2 {
-    font-size: 2rem;
-  }
-
-  .contacto p {
-    font-size: 1rem;
-  }
-
-  .contact-buttons {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .contact-btn {
-    width: 40px;
-    height: 40px;
-  }
-
-  footer {
-    font-size: 0.85rem;
-  }
-}
-/* ========================================
-  Gallery
+   Gallery
 ========================================= */
 .gallery {
   position: relative;
@@ -494,20 +640,22 @@ footer {
   height: 50vh;
   max-height: 50vh;
   width: 100%;
-  max-width: 100%;
   display: flex;
   align-items: center;
   overflow: hidden;
 }
+
 .gallery img {
   width: 100%;
   max-height: 95%;
   object-fit: contain;
   display: none;
 }
+
 .gallery img.active {
   display: block;
 }
+
 .nav-btn {
   position: absolute;
   top: 50%;
@@ -521,15 +669,22 @@ footer {
   border-radius: 50%;
   transition: background 0.3s ease;
 }
+
 .nav-btn:hover {
   background: var(--md-teal);
 }
-.prev { left: 10px; }
-.next { right: 10px; }
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
 
 @media (max-width: 600px) {
   .nav-btn {
-      padding: 10px;
-      font-size: 14px;
+    padding: 10px;
+    font-size: 14px;
   }
 }

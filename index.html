@@ -55,14 +55,19 @@
               <!-- <img src="res/lavado.jpg" alt="Lavado y Secado" /> -->
               <h3>Lavado y Secado</h3>
               <div class="price">$700</div>
-              <p>Servicio de lavado y secado. Con una taza de Detergente (50g).</p>
+              <p>
+                Servicio de lavado y secado. Con una taza de Detergente (50g).
+              </p>
             </article>
 
             <article class="servicio-item">
               <!-- <img src="res/complementos.jpg" alt="Complementos Adicionales" /> -->
               <h3>Complementos</h3>
               <!-- <div class="price">$200</div> -->
-              <p>Incluir <strong>suavisantes</strong> y <strong>perlas de olor</strong> con un precio adicional.</p>
+              <p>
+                Incluir <strong>suavisantes</strong> y
+                <strong>perlas de olor</strong> con un precio adicional.
+              </p>
             </article>
             <article class="servicio-item">
               <!-- <img src="res/domicilio.jpg" alt="Servicio a Domicilio" /> -->
@@ -102,6 +107,7 @@
           <img src="res/1.jpg" />
           <img src="res/5.jpg" />
           <img src="res/4.jpg" />
+          <img src="res/c2.jpg" />
           <button class="nav-btn next">&#10095;</button>
         </div>
       </section>
@@ -141,10 +147,12 @@
           <details class="faq-item">
             <summary>¿Qué tipos de prendas aceptan?</summary>
             <p>
-              Aceptamos la mayoría de las prendas, <strong>exceptuando ropa interior</strong>.
-              Los <strong>edredones</strong> y otras prendas de gran volumen se evalúan según el caso.
-              Si tienes una prenda muy especial o de materiales que requieran cuidado 
-              adicional, contáctanos para evaluar el tratamiento adecuado.
+              Aceptamos la mayoría de las prendas,
+              <strong>exceptuando ropa interior</strong>. Los
+              <strong>edredones</strong> y otras prendas de gran volumen se
+              evalúan según el caso. Si tienes una prenda muy especial o de
+              materiales que requieran cuidado adicional, contáctanos para
+              evaluar el tratamiento adecuado.
             </p>
           </details>
 
@@ -172,17 +180,41 @@
             <li>
               <strong>Revisión del volumen de ropa:</strong>
               <p>
-                El costo se calculará según la cantidad de cestos estándar que
-                ocupe la ropa.
-                Prendas de <scope style="font-weight: 900;">gran volumen</scope> como <scope style="font-weight: 900;">edredones</scope>
-                serán evaluados de forma independiente.
+                El costo se calculará según la cantidad de
+                <span
+                  style="
+                    color: blue;
+                    font-weight: 900;
+                    cursor: pointer;
+                  "
+                  onclick="abrirModal()"
+                >
+                  cestos
+                </span>
+                que ocupe la ropa. Prendas de
+                <span style="font-weight: 900">gran volumen</span> como
+                <span style="font-weight: 900">edredones</span> serán evaluados
+                de forma independiente.
               </p>
             </li>
+
+            <!-- Modal -->
+            <div id="modalCesto" class="modal">
+              <span class="cerrar" onclick="cerrarModal()">&times;</span>
+              <img
+                class="modal-contenido"
+                id="imgCesto"
+                src="res/c1.jpg"
+                alt="Cesto de ropa"
+              />
+              <div class="caption">Ejemplo de cesto de ropa</div>
+            </div>
+
             <li>
               <strong>Restricciones de materiales:</strong>
               <p>
-                No se aceptan prendas de cuero, gamuza u otros 
-                <scope style="font-weight: 900;">materiales delicados</scope>
+                No se aceptan prendas de cuero, gamuza u otros
+                <scope style="font-weight: 900">materiales delicados</scope>
                 que puedan dañarse en máquina.
               </p>
             </li>
@@ -211,7 +243,8 @@
             <li>
               <strong>Condiciones de higiene:</strong>
               <p>
-                No aceptamos ropa interior ni prendas con residuos orgánicos o restos de sustancias químicas.
+                No aceptamos ropa interior ni prendas con residuos orgánicos o
+                restos de sustancias químicas.
               </p>
             </li>
             <li>
@@ -223,8 +256,8 @@
             <li>
               <strong>Puntualidad en la entrega de ropa:</strong>
               <p>
-                El servicio se completará en el menor tiempo posible, teniendo en
-                cuenta factores climáticos, energéticos y de lista de espera.
+                El servicio se completará en el menor tiempo posible, teniendo
+                en cuenta factores climáticos, energéticos y de lista de espera.
               </p>
             </li>
             <li>
@@ -282,9 +315,7 @@
               </svg>
             </a>
           </div>
-          <p>
-            Será un placer atenderlo.
-          </p>
+          <p>Será un placer atenderlo.</p>
         </div>
       </section>
     </main>

@@ -570,6 +570,7 @@ img {
   margin-bottom: var(--spacing-lg);
   position: relative;
   overflow: hidden;
+  padding: 5px;
 }
 
 .service-icon::before {

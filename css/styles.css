@@ -1104,3 +1104,136 @@ img {
     transform: rotate(360deg);
   }
 }
+
+/* ========================================
+       Normas Section
+    ========================================= */
+.normas {
+  padding: var(--spacing-3xl) 0;
+  background: rgba(240, 147, 251, 0.02);
+}
+
+.normas h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: var(--spacing-3xl);
+  color: var(--text-color);
+}
+
+.normas ol {
+  list-style: none;
+  counter-reset: norma-counter;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.normas li {
+  counter-increment: norma-counter;
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-xl);
+  position: relative;
+  transition: var(--transition-smooth);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-lg);
+}
+
+.normas li .content-wrapper {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+  gap: var(--spacing-xl);
+}
+
+.normas li::before {
+  content: counter(norma-counter);
+  width: 32px;
+  height: 32px;
+  background: var(--primary-color);
+  color: white;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.normas li:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
+  border-color: rgba(102, 126, 234, 0.2);
+}
+
+.normas li strong {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: var(--spacing-sm);
+  min-width: 280px;
+  flex-shrink: 0;
+}
+
+.normas li p {
+  color: var(--text-muted);
+  line-height: 1.6;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.normas li p span {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Responsive para la sección de normas */
+@media (max-width: 768px) {
+  .normas li {
+    padding: var(--spacing-lg);
+    gap: var(--spacing-md);
+    flex-direction: column;
+  }
+  
+  .normas li strong {
+    min-width: auto;
+  }
+  
+  .normas li::before {
+    width: 28px;
+    height: 28px;
+    font-size: 0.85rem;
+  }
+  
+  .normas li strong {
+    font-size: 1rem;
+  }
+  
+  .normas li p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .normas li {
+    padding: var(--spacing-md);
+    gap: var(--spacing-sm);
+    flex-direction: column;
+  }
+  
+  .normas li::before {
+    width: 24px;
+    height: 24px;
+    font-size: 0.8rem;
+    align-self: flex-start;
+  }
+}

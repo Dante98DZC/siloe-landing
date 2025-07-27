@@ -78,6 +78,7 @@
           <div class="cta-container">
             <a href="#contact" class="btn-primary">Contáctanos Ahora</a>
             <a href="#services" class="btn-secondary">Ver Servicios</a>
+            <a href="#FAQ" class="btn-secondary">Precios</a>
           </div>
         </div>
       </div>
@@ -95,31 +96,33 @@
         </div>
 
         <div class="services-grid">
-          <div class="service-card slide-in-left">
-            <div class="price-tag">$700</div>
-            <div class="service-icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="{1.5}"
-                stroke="currentColor"
-                className="size-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
-                />
-              </svg>
+          <a href="#FAQ" style="text-decoration: none; color: inherit;">
+            <div class="service-card slide-in-left">
+              <div class="price-tag">$700</div>
+              <div class="service-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="{1.5}"
+                  stroke="currentColor"
+                  className="size-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 10a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
+                  />
+                </svg>
+              </div>
+              <h3>Lavado y Secado</h3>
+              <h4>Servicio Completo</h4>
+              <p>
+                Servicio de lavado y secado. el precio se calcula por el volumen
+                de ropa, según la cantidad de cestos que esta ocupe.
+              </p>
             </div>
-            <h3>Lavado y Secado</h3>
-            <h4>Servicio Completo</h4>
-            <p>
-              Servicio de lavado y secado. el precio se calcula por el volumen
-              de ropa, según la cantidad de cestos que esta ocupe.
-            </p>
-          </div>
+          </a>
 
           <div class="service-card fade-in">
             <div class="service-icon">
@@ -212,7 +215,7 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="faq-section fade-in">
+    <section class="faq-section fade-in" id="FAQ">
       <div class="container">
         <div class="section-title">
           <h2>Preguntas Frecuentes</h2>
@@ -248,9 +251,6 @@
                     onclick="openModal(this.src)"
                   />
                 </div>
-                <p>
-                 Imagen de los cestos que utilizamos para medir el volumen de las prendas.
-                </p>
               </div>
             </div>
           </div>

@@ -794,17 +794,13 @@ img {
 }
 
 .faq-answer.open {
-  max-height: 200px;
+  max-height: 400px;
 }
 
 .faq-answer-content {
   padding: 0 var(--spacing-xl) var(--spacing-lg);
   color: var(--text-muted);
   line-height: 1.6;
-}
-/* Ajuste para FAQ con imagen */
-.faq-answer.open {
-  max-height: 400px; /* Aumentamos la altura máxima para acomodar la imagen */
 }
 
 .faq-answer-content {
@@ -818,7 +814,7 @@ img {
   margin-bottom: var(--spacing-md);
   border-radius: var(--radius-md);
   overflow: hidden;
-  display: inline-block;
+  float: left;
   border: 1px solid var(--glass-border);
   transition: var(--transition-smooth);
 }

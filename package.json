@@ -10,7 +10,7 @@
     "deploy": "netlify deploy --prod"
   },
   "keywords": ["chatbot", "lavanderia", "netlify", "huggingface"],
-  "author": "Tu Nombre",
+  "author": "D4vd",
   "license": "MIT",
   "dependencies": {
     "openai": "^4.20.0"

@@ -7,7 +7,7 @@
 
 [functions]
   # Directorio donde están las funciones
-  directory = "netlify/functions"
+  directory = ".netlify/functions"
 
 [[headers]]
   # Aplicar CORS a todas las rutas

@@ -1,0 +1,17 @@
+{
+  "name": "lavanderia-siloe-chatbot",
+  "version": "1.0.0",
+  "description": "Chatbot inteligente para Lavandería Siloé",
+  "main": "index.html",
+  "scripts": {
+    "dev": "netlify dev",
+    "build": "echo 'No build process needed'",
+    "deploy": "netlify deploy --prod"
+  },
+  "keywords": ["chatbot", "lavanderia", "netlify", "huggingface"],
+  "author": "Tu Nombre",
+  "license": "MIT",
+  "devDependencies": {
+    "netlify-cli": "^17.0.0"
+  }
+}

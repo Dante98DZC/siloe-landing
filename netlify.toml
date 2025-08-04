@@ -1,0 +1,32 @@
+[build]
+  # Directorio donde están tus archivos estáticos
+  publish = "."
+  
+  # Comando de build (si usas algún build process)
+  # command = "npm run build"
+
+[functions]
+  # Directorio donde están las funciones
+  directory = "netlify/functions"
+
+[[headers]]
+  # Aplicar CORS a todas las rutas
+  for = "/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "GET, POST, PUT, DELETE, OPTIONS"
+    Access-Control-Allow-Headers = "Content-Type, Authorization"
+
+[[headers]]
+  # Headers específicos para las funciones
+  for = "/.netlify/functions/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "POST, OPTIONS"
+    Access-Control-Allow-Headers = "Content-Type"
+
+# Redirects para manejar rutas SPA si es necesario
+[[redirects]]
+  from = "/api/chat"
+  to = "/.netlify/functions/chat"
+  status = 200

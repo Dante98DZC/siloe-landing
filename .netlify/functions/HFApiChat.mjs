@@ -1,70 +1,73 @@
 import { OpenAI } from "openai";
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY, // <- asegúrate que esta variable esté en Netlify
+const client = new OpenAI({
+  baseURL: "https://router.huggingface.co/v1",
+  apiKey: process.env.HUGGINGFACE_TOKEN,
 });
 
-export async function handler(event) {
-  if (event.httpMethod === "OPTIONS") {
+export default async (event, context) => {
+  if (event.httpMethod === 'OPTIONS') {
     return {
       statusCode: 200,
       headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "Content-Type",
-        "Access-Control-Allow-Methods": "POST, OPTIONS"
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS'
       },
-      body: "",
+      body: ''
     };
   }
 
-  if (event.httpMethod !== "POST") {
+  if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
-      body: "Method Not Allowed",
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ error: 'Method not allowed' })
     };
   }
 
   try {
     const { prompt } = JSON.parse(event.body);
 
-    const chatCompletion = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo", // o "gpt-4" si tienes acceso
+    const chatCompletion = await client.chat.completions.create({
+      model: "HuggingFaceTB/SmolLM3-3B:hf-inference",
       messages: [
         {
           role: "user",
           content: prompt,
         },
       ],
-      temperature: 0.7,
-      max_tokens: 150,
     });
 
-    const responseText = chatCompletion.choices?.[0]?.message?.content ?? "";
+    const generated = chatCompletion.choices?.[0]?.message?.content || '';
 
     return {
       statusCode: 200,
       headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json",
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        text: responseText.trim(),
-        success: true,
-        model: "gpt-3.5-turbo",
-      }),
+        text: generated.trim(),
+        model: "SmolLM3-3B",
+        success: true
+      })
     };
+
   } catch (error) {
-    console.error("❌ Error:", error);
     return {
       statusCode: 500,
       headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Content-Type": "application/json",
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        error: "Error interno",
-        details: error.message,
-      }),
+        error: 'Error interno',
+        details: error.message
+      })
     };
   }
-}
+};

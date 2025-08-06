@@ -6,27 +6,27 @@ const client = new OpenAI({
 });
 
 export default async (event, context) => {
+  // Manejo de preflight (CORS)
   if (event.httpMethod === 'OPTIONS') {
-    return {
-      statusCode: 200,
+    return new Response('', {
+      status: 200,
       headers: {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Headers': 'Content-Type',
         'Access-Control-Allow-Methods': 'POST, OPTIONS'
-      },
-      body: ''
-    };
+      }
+    });
   }
 
+  // Solo permitir POST
   if (event.httpMethod !== 'POST') {
-    return {
-      statusCode: 405,
+    return new Response(JSON.stringify({ error: 'Method not allowed' }), {
+      status: 405,
       headers: {
         'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ error: 'Method not allowed' })
-    };
+      }
+    });
   }
 
   try {
@@ -44,30 +44,29 @@ export default async (event, context) => {
 
     const generated = chatCompletion.choices?.[0]?.message?.content || '';
 
-    return {
-      statusCode: 200,
+    return new Response(JSON.stringify({
+      text: generated.trim(),
+      model: "SmolLM3-3B",
+      success: true
+    }), {
+      status: 200,
       headers: {
         'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        text: generated.trim(),
-        model: "SmolLM3-3B",
-        success: true
-      })
-    };
+      }
+    });
 
   } catch (error) {
-    return {
-      statusCode: 500,
+    console.error("❌ Error:", error);
+    return new Response(JSON.stringify({
+      error: 'Error interno',
+      details: error.message
+    }), {
+      status: 500,
       headers: {
         'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        error: 'Error interno',
-        details: error.message
-      })
-    };
+      }
+    });
   }
 };

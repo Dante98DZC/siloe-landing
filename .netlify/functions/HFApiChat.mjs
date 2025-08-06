@@ -1,4 +1,5 @@
 import { OpenAI } from "openai";
+import { Response } from '@netlify/functions';
 
 const client = new OpenAI({
   baseURL: "https://router.huggingface.co/v1",

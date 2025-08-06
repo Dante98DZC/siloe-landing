@@ -5,8 +5,7 @@ const client = new OpenAI({
   apiKey: process.env.HUGGINGFACE_TOKEN,
 });
 
-export default async (event, context) => {
-  // Manejo de preflight (CORS)
+export async function handler(event, context) {
   if (event.httpMethod === 'OPTIONS') {
     return new Response('', {
       status: 200,
@@ -18,7 +17,6 @@ export default async (event, context) => {
     });
   }
 
-  // Solo permitir POST
   if (event.httpMethod !== 'POST') {
     return new Response(JSON.stringify({ error: 'Method not allowed' }), {
       status: 405,
@@ -69,4 +67,4 @@ export default async (event, context) => {
       }
     });
   }
-};
+}

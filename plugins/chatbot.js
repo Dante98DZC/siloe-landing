@@ -1,10 +1,54 @@
-// chatbot.js - Chatbot para Lavandería Siloé
+// chatbot.js - Chatbot mejorado para Lavandería Siloé
 class SiloeChatbot {
   constructor() {
     this.isOpen = false;
     this.messages = [];
     this.isTyping = false;
     this.init();
+    
+    // Respuestas predefinidas más específicas
+    this.responses = {
+      precios: [
+        "Nuestro servicio cuesta $700 por cesto de ropa (sin doblar). ¿Te gustaría conocer más detalles?",
+        "El precio es $700 por cesto. Incluye lavado y secado, pero no planchado.",
+        "Cobramos $700 por cada cesto de ropa. El precio se basa en el volumen que ocupe."
+      ],
+      tiempo: [
+        "La entrega es entre 24 y 48 horas, dependiendo del clima y la energía eléctrica.",
+        "Tu ropa estará lista en 24-48 horas. Te avisamos cuando esté lista.",
+        "El tiempo de entrega es de 1-2 días hábiles aproximadamente."
+      ],
+      domicilio: [
+        "Sí, recogemos y entregamos tu ropa en tu casa. ¿Necesitas agendar una recogida?",
+        "Ofrecemos servicio a domicilio sin costo adicional. Solo coordina con nosotros.",
+        "Vamos a tu casa a recoger y entregar. ¡Muy cómodo para ti!"
+      ],
+      contacto: [
+        "Puedes contactarnos al +53 50108881 por WhatsApp o llamada.",
+        "Nuestro número es +53 50108881. Escribimos por WhatsApp también.",
+        "Llámanos al +53 50108881 o escribe por WhatsApp cuando gustes."
+      ],
+      pago: [
+        "Aceptamos efectivo y transferencias bancarias para tu comodidad.",
+        "Puedes pagar en efectivo o por transferencia bancaria.",
+        "Formas de pago: efectivo al momento o transferencia bancaria."
+      ],
+      restricciones: [
+        "No lavamos ropa interior ni medias por políticas de higiene.",
+        "Por higiene, no aceptamos ropa interior ni medias. Todo lo demás sí.",
+        "Lavamos toda la ropa excepto ropa interior y medias."
+      ],
+      complementos: [
+        "Tenemos suavizantes y perlas de olor con costo adicional. ¿Te interesan?",
+        "Ofrecemos suavizante y perlas de olor por un pequeño costo extra.",
+        "Puedes agregar suavizante o perlas de olor por un precio adicional."
+      ],
+      horario: [
+        "Nuestros horarios son flexibles, solo necesitas coordinar con nosotros antes.",
+        "Trabajamos por citas. Llama para coordinar el mejor horario para ti.",
+        "El horario se coordina previamente según tu disponibilidad."
+      ]
+    };
   }
 
   init() {
@@ -377,7 +421,7 @@ class SiloeChatbot {
   }
 
   addInitialMessage() {
-    const welcomeMessage = "¡Hola! Soy el asistente virtual de Lavandería Siloé. ¿En qué puedo ayudarte hoy? Puedes preguntarme sobre nuestros servicios, precios o cualquier duda que tengas. 😊";
+    const welcomeMessage = "¡Hola! Soy el asistente de Lavandería Siloé. ¿En qué puedo ayudarte? Pregúntame sobre precios, servicios o cualquier duda. 😊";
     this.addMessage(welcomeMessage, 'bot');
   }
 
@@ -414,13 +458,68 @@ class SiloeChatbot {
     if (typing) typing.remove();
   }
 
-  showError(message) {
-    const messagesContainer = document.getElementById('chatMessages');
-    const errorDiv = document.createElement('div');
-    errorDiv.className = 'error-message';
-    errorDiv.textContent = message;
-    messagesContainer.appendChild(errorDiv);
-    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  // Detectar intención del mensaje
+  detectIntent(message) {
+    const msg = message.toLowerCase();
+    
+    if (msg.includes('precio') || msg.includes('costo') || msg.includes('tarifa') || msg.includes('cobr')) {
+      return 'precios';
+    }
+    if (msg.includes('tiempo') || msg.includes('demora') || msg.includes('entrega') || msg.includes('cuanto tard')) {
+      return 'tiempo';
+    }
+    if (msg.includes('domicilio') || msg.includes('casa') || msg.includes('recoge') || msg.includes('entreg')) {
+      return 'domicilio';
+    }
+    if (msg.includes('contacto') || msg.includes('teléfono') || msg.includes('whatsapp') || msg.includes('llamar')) {
+      return 'contacto';
+    }
+    if (msg.includes('pago') || msg.includes('pagar') || msg.includes('efectivo') || msg.includes('transferencia')) {
+      return 'pago';
+    }
+    if (msg.includes('ropa interior') || msg.includes('medias') || msg.includes('no accept')) {
+      return 'restricciones';
+    }
+    if (msg.includes('suavizante') || msg.includes('perlas') || msg.includes('olor') || msg.includes('complement')) {
+      return 'complementos';
+    }
+    if (msg.includes('horario') || msg.includes('hora') || msg.includes('cuando') || msg.includes('abiert')) {
+      return 'horario';
+    }
+    
+    return null;
+  }
+
+  // Obtener respuesta aleatoria según la intención
+  getRandomResponse(intent) {
+    const responses = this.responses[intent];
+    if (!responses) return null;
+    
+    return responses[Math.floor(Math.random() * responses.length)];
+  }
+
+  // Limpiar respuesta de la IA
+  cleanAIResponse(text) {
+    if (!text) return '';
+    
+    // Remover etiquetas de pensamiento
+    text = text.replace(/<think>.*?<\/think>/gis, '');
+    
+    // Remover prefijos comunes
+    text = text.replace(/^(Asistente:|Cliente:|Bot:|AI:|Assistant:)/gi, '');
+    
+    // Remover asteriscos y formateo markdown
+    text = text.replace(/\*\*/g, '').replace(/\*/g, '');
+    
+    // Limpiar espacios extra
+    text = text.trim();
+    
+    // Limitar longitud
+    if (text.length > 200) {
+      text = text.substring(0, 200) + '...';
+    }
+    
+    return text;
   }
 
   async sendMessage() {
@@ -441,99 +540,74 @@ class SiloeChatbot {
     // Mostrar indicador de escritura
     this.showTyping();
 
-    try {
-      // Crear contexto para la IA
-      const context = `Eres un asistente virtual amigable para Lavandería Siloé en Holguín, Cuba. 
-Información clave:
-- Servicio de lavado y secado por $700 por cesto (sin doblar ropa)
-- Tiempo de entrega: 24-48 horas
-- Servicio a domicilio disponible
-- No aceptamos ropa interior ni medias
-- Complementos: suavizantes y perlas de olor (costo adicional)
-- Horario de atención: coordinar previamente
-- Pago: efectivo y transferencias bancarias
+    // Intentar respuesta local primero
+    const intent = this.detectIntent(message);
+    const localResponse = this.getRandomResponse(intent);
+    
+    if (localResponse) {
+      // Usar respuesta local
+      setTimeout(() => {
+        this.hideTyping();
+        this.addMessage(localResponse, 'bot');
+        this.isTyping = false;
+        sendBtn.disabled = false;
+        input.focus();
+      }, 800); // Simular tiempo de respuesta
+      
+    } else {
+      // Usar IA como fallback
+      try {
+        // Crear prompt más simple y directo
+        const prompt = `Eres el asistente de Lavandería Siloé en Cuba. Responde en máximo 20 palabras, de forma natural y amigable.
 
-Responde de forma breve, amigable y profesional. Si no sabes algo específico, sugiere contactar directamente.
+Servicios:
+- Lavado y secado: $700 por cesto
+- Entrega: 24-48 horas
+- Domicilio disponible
+- No ropa interior ni medias
+- Contacto: +53 50108881
 
-Cliente: ${message}
-Asistente:`;
+Pregunta: ${message}
+Respuesta:`;
 
-      const response = await fetch('/.netlify/functions/HFApiChat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          prompt: context,
-          options: {
-            max_new_tokens: 100,
-            temperature: 0.7
-          }
-        })
-      });
+        const response = await fetch('/.netlify/functions/HFApiChat', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            prompt: prompt
+          })
+        });
 
-      const data = await response.json();
+        const data = await response.json();
 
-      if (data.error) {
-        throw new Error(data.error);
+        if (data.error) {
+          throw new Error(data.error);
+        }
+
+        let botResponse = this.cleanAIResponse(data.text);
+        
+        // Validar respuesta
+        if (!botResponse || botResponse.length < 5 || botResponse.includes('no puedo')) {
+          botResponse = "Para más información específica, contáctanos al +53 50108881. ¡Estaremos felices de ayudarte!";
+        }
+
+        this.hideTyping();
+        this.addMessage(botResponse, 'bot');
+
+      } catch (error) {
+        console.error('Error:', error);
+        this.hideTyping();
+        
+        // Respuesta de fallback genérica
+        this.addMessage("¡Gracias por tu mensaje! Para más información, contáctanos al +53 50108881.", 'bot');
+      } finally {
+        this.isTyping = false;
+        sendBtn.disabled = false;
+        input.focus();
       }
-
-      // Obtener respuesta y limpiarla
-      let botResponse = data.text || 'Lo siento, no pude procesar tu mensaje.';
-      
-      // Limpiar respuesta
-      botResponse = botResponse.replace(/^(Asistente:|Cliente:)/gi, '').trim();
-      
-      // Fallback si la respuesta es muy corta o genérica
-      if (botResponse.length < 10 || botResponse.includes('no puedo') || botResponse.includes('no entiendo')) {
-        botResponse = this.getFallbackResponse(message);
-      }
-
-      this.hideTyping();
-      this.addMessage(botResponse, 'bot');
-
-    } catch (error) {
-      console.error('Error:', error);
-      this.hideTyping();
-      
-      // Respuesta de fallback local
-      const fallbackResponse = this.getFallbackResponse(message);
-      this.addMessage(fallbackResponse, 'bot');
-    } finally {
-      this.isTyping = false;
-      sendBtn.disabled = false;
-      input.focus();
     }
-  }
-
-  getFallbackResponse(message) {
-    const msg = message.toLowerCase();
-    
-    if (msg.includes('precio') || msg.includes('costo') || msg.includes('tarifa')) {
-      return 'Nuestro servicio cuesta $700 por cesto de ropa. El precio se calcula según el volumen que ocupe tu ropa sin doblar.';
-    }
-    
-    if (msg.includes('tiempo') || msg.includes('demora') || msg.includes('entrega')) {
-      return 'El tiempo de entrega es de 24 a 48 horas, dependiendo de factores climáticos y energéticos.';
-    }
-    
-    if (msg.includes('domicilio') || msg.includes('recoge') || msg.includes('entrega')) {
-      return 'Sí, ofrecemos servicio a domicilio. Recogemos y entregamos tu ropa en la puerta de tu casa.';
-    }
-    
-    if (msg.includes('contacto') || msg.includes('teléfono') || msg.includes('whatsapp')) {
-      return 'Puedes contactarnos al +53 50108881 por WhatsApp o llamada. ¡Estaremos encantados de atenderte!';
-    }
-    
-    if (msg.includes('ropa interior') || msg.includes('medias')) {
-      return 'No aceptamos ropa interior ni medias por políticas de higiene.';
-    }
-
-    if (msg.includes('pago') || msg.includes('cobro')) {
-      return 'Aceptamos pagos en efectivo y transferencias bancarias para tu comodidad.';
-    }
-    
-    return 'Para más información específica, te recomiendo contactarnos directamente al +53 50108881. ¡Estaremos felices de ayudarte con cualquier consulta!';
   }
 }
 

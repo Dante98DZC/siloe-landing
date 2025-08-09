@@ -1,2 +1,25 @@
+# Node.js
 node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+# Entorno
 .env
+.env.local
+.env.*.local
+
+# Netlify - ignorar configuración local
+.netlify/
+
+# Mantener funciones en el repositorio
+!netlify/functions/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Build y caché
+dist/
+build/
+.cache/

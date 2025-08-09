@@ -7,7 +7,7 @@
 
 [functions]
   # Directorio donde están las funciones
-  directory = ".netlify/functions"
+  directory = "netlify/functions"
 
 [[headers]]
   # Aplicar CORS a todas las rutas
@@ -19,7 +19,7 @@
 
 [[headers]]
   # Headers específicos para las funciones
-  for = "/.netlify/functions/*"
+  for = "/netlify/functions/*"
   [headers.values]
     Access-Control-Allow-Origin = "*"
     Access-Control-Allow-Methods = "POST, OPTIONS"
@@ -28,5 +28,5 @@
 # Redirects para manejar rutas SPA si es necesario
 [[redirects]]
   from = "/api/chat"
-  to = "/.netlify/functions/chat"
+  to = "/netlify/functions/chat"
   status = 200

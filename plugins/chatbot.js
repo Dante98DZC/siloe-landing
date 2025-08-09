@@ -570,7 +570,7 @@ Servicios:
 Pregunta: ${message}
 Respuesta:`;
 
-        const response = await fetch('/.netlify/functions/HFApiChat', {
+        const response = await fetch('/netlify/functions/HFApiChat', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

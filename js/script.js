@@ -79,6 +79,26 @@ function initTextRotation() {
   }, CONFIG.ROTATION_INTERVAL);
 }
 
+// Service cards functionality
+function toggleCard(card) {
+  // Cerrar otras tarjetas
+  document.querySelectorAll(".service-card").forEach((otherCard) => {
+    if (otherCard !== card) otherCard.classList.remove("flipped");
+  });
+
+  // Toggle tarjeta actual
+  card.classList.toggle("flipped");
+}
+
+// Cerrar tarjetas al hacer click fuera
+document.addEventListener("click", (e) => {
+  if (!e.target.closest(".service-card")) {
+    document.querySelectorAll(".service-card").forEach((card) => {
+      card.classList.remove("flipped");
+    });
+  }
+});
+
 // Gallery functionality
 function initGalleryAutoPlay() {
   const images = document.querySelectorAll(".gallery-image");

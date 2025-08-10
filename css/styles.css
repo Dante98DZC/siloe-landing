@@ -670,7 +670,7 @@ img {
 }
 
 .price-tag.accent {
-  background: var(--accent-gradient);
+  background: var(--primary-gradient);
 }
 
 /* Indicador de flip */

@@ -1,53 +1,53 @@
-// chatbot.js - Chatbot mejorado para Lavandería Siloé
+// chatbot.js
 class SiloeChatbot {
   constructor() {
     this.isOpen = false;
     this.messages = [];
     this.isTyping = false;
     this.init();
-    
+
     // Respuestas predefinidas más específicas
     this.responses = {
       precios: [
         "Nuestro servicio cuesta $700 por cesto de ropa (sin doblar). ¿Te gustaría conocer más detalles?",
         "El precio es $700 por cesto. Incluye lavado y secado, pero no planchado.",
-        "Cobramos $700 por cada cesto de ropa. El precio se basa en el volumen que ocupe."
+        "Cobramos $700 por cada cesto de ropa. El precio se basa en el volumen que ocupe.",
       ],
       tiempo: [
         "La entrega es entre 24 y 48 horas, dependiendo del clima y la energía eléctrica.",
         "Tu ropa estará lista en 24-48 horas. Te avisamos cuando esté lista.",
-        "El tiempo de entrega es de 1-2 días hábiles aproximadamente."
+        "El tiempo de entrega es de 1-2 días hábiles aproximadamente.",
       ],
       domicilio: [
         "Sí, recogemos y entregamos tu ropa en tu casa. ¿Necesitas agendar una recogida?",
         "Ofrecemos servicio a domicilio sin costo adicional. Solo coordina con nosotros.",
-        "Vamos a tu casa a recoger y entregar. ¡Muy cómodo para ti!"
+        "Vamos a tu casa a recoger y entregar. ¡Muy cómodo para ti!",
       ],
       contacto: [
         "Puedes contactarnos al +53 50108881 por WhatsApp o llamada.",
         "Nuestro número es +53 50108881. Escribimos por WhatsApp también.",
-        "Llámanos al +53 50108881 o escribe por WhatsApp cuando gustes."
+        "Llámanos al +53 50108881 o escribe por WhatsApp cuando gustes.",
       ],
       pago: [
         "Aceptamos efectivo y transferencias bancarias para tu comodidad.",
         "Puedes pagar en efectivo o por transferencia bancaria.",
-        "Formas de pago: efectivo al momento o transferencia bancaria."
+        "Formas de pago: efectivo al momento o transferencia bancaria.",
       ],
       restricciones: [
         "No lavamos ropa interior ni medias por políticas de higiene.",
         "Por higiene, no aceptamos ropa interior ni medias. Todo lo demás sí.",
-        "Lavamos toda la ropa excepto ropa interior y medias."
+        "Lavamos toda la ropa excepto ropa interior y medias.",
       ],
       complementos: [
         "Tenemos suavizantes y perlas de olor con costo adicional. ¿Te interesan?",
         "Ofrecemos suavizante y perlas de olor por un pequeño costo extra.",
-        "Puedes agregar suavizante o perlas de olor por un precio adicional."
+        "Puedes agregar suavizante o perlas de olor por un precio adicional.",
       ],
       horario: [
         "Nuestros horarios son flexibles, solo necesitas coordinar con nosotros antes.",
         "Trabajamos por citas. Llama para coordinar el mejor horario para ti.",
-        "El horario se coordina previamente según tu disponibilidad."
-      ]
+        "El horario se coordina previamente según tu disponibilidad.",
+      ],
     };
   }
 
@@ -59,8 +59,8 @@ class SiloeChatbot {
 
   createChatWidget() {
     // Crear el contenedor principal del chat
-    const chatContainer = document.createElement('div');
-    chatContainer.id = 'siloe-chatbot';
+    const chatContainer = document.createElement("div");
+    chatContainer.id = "siloe-chatbot";
     chatContainer.innerHTML = `
       <!-- Botón flotante -->
       <div class="chat-toggle" id="chatToggle">
@@ -98,7 +98,7 @@ class SiloeChatbot {
     `;
 
     // Agregar estilos CSS
-    const styles = document.createElement('style');
+    const styles = document.createElement("style");
     styles.textContent = `
       #siloe-chatbot {
         position: fixed;
@@ -386,17 +386,17 @@ class SiloeChatbot {
   }
 
   addEventListeners() {
-    const toggle = document.getElementById('chatToggle');
-    const close = document.getElementById('chatClose');
-    const input = document.getElementById('chatInput');
-    const send = document.getElementById('chatSend');
+    const toggle = document.getElementById("chatToggle");
+    const close = document.getElementById("chatClose");
+    const input = document.getElementById("chatInput");
+    const send = document.getElementById("chatSend");
 
-    toggle.addEventListener('click', () => this.toggleChat());
-    close.addEventListener('click', () => this.closeChat());
-    send.addEventListener('click', () => this.sendMessage());
-    
-    input.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter' && !e.shiftKey) {
+    toggle.addEventListener("click", () => this.toggleChat());
+    close.addEventListener("click", () => this.closeChat());
+    send.addEventListener("click", () => this.sendMessage());
+
+    input.addEventListener("keypress", (e) => {
+      if (e.key === "Enter" && !e.shiftKey) {
         e.preventDefault();
         this.sendMessage();
       }
@@ -404,42 +404,43 @@ class SiloeChatbot {
   }
 
   toggleChat() {
-    const window = document.getElementById('chatWindow');
+    const window = document.getElementById("chatWindow");
     this.isOpen = !this.isOpen;
-    
+
     if (this.isOpen) {
-      window.classList.add('open');
-      document.getElementById('chatInput').focus();
+      window.classList.add("open");
+      document.getElementById("chatInput").focus();
     } else {
-      window.classList.remove('open');
+      window.classList.remove("open");
     }
   }
 
   closeChat() {
-    document.getElementById('chatWindow').classList.remove('open');
+    document.getElementById("chatWindow").classList.remove("open");
     this.isOpen = false;
   }
 
   addInitialMessage() {
-    const welcomeMessage = "¡Hola! Soy el asistente de Lavandería Siloé. ¿En qué puedo ayudarte? Pregúntame sobre precios, servicios o cualquier duda. 😊";
-    this.addMessage(welcomeMessage, 'bot');
+    const welcomeMessage =
+      "¡Hola! Soy el asistente de Lavandería Siloé. ¿En qué puedo ayudarte? Pregúntame sobre precios, servicios o cualquier duda. 😊";
+    this.addMessage(welcomeMessage, "bot");
   }
 
   addMessage(text, sender) {
-    const messagesContainer = document.getElementById('chatMessages');
-    const messageDiv = document.createElement('div');
+    const messagesContainer = document.getElementById("chatMessages");
+    const messageDiv = document.createElement("div");
     messageDiv.className = `message ${sender}`;
     messageDiv.textContent = text;
-    
+
     messagesContainer.appendChild(messageDiv);
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
   }
 
   showTyping() {
-    const messagesContainer = document.getElementById('chatMessages');
-    const typingDiv = document.createElement('div');
-    typingDiv.className = 'typing-indicator';
-    typingDiv.id = 'typingIndicator';
+    const messagesContainer = document.getElementById("chatMessages");
+    const typingDiv = document.createElement("div");
+    typingDiv.className = "typing-indicator";
+    typingDiv.id = "typingIndicator";
     typingDiv.innerHTML = `
       Escribiendo...
       <div class="typing-dots">
@@ -448,45 +449,84 @@ class SiloeChatbot {
         <div class="typing-dot"></div>
       </div>
     `;
-    
+
     messagesContainer.appendChild(typingDiv);
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
   }
 
   hideTyping() {
-    const typing = document.getElementById('typingIndicator');
+    const typing = document.getElementById("typingIndicator");
     if (typing) typing.remove();
   }
 
   // Detectar intención del mensaje
   detectIntent(message) {
     const msg = message.toLowerCase();
-    
-    if (msg.includes('precio') || msg.includes('costo') || msg.includes('tarifa') || msg.includes('cobr')) {
-      return 'precios';
+
+    if (
+      msg.includes("precio") ||
+      msg.includes("costo") ||
+      msg.includes("tarifa") ||
+      msg.includes("cobr")
+    ) {
+      return "precios";
     }
-    if (msg.includes('tiempo') || msg.includes('demora') || msg.includes('entrega') || msg.includes('cuanto tard')) {
-      return 'tiempo';
+    if (
+      msg.includes("tiempo") ||
+      msg.includes("demora") ||
+      msg.includes("entrega") ||
+      msg.includes("cuanto tard")
+    ) {
+      return "tiempo";
     }
-    if (msg.includes('domicilio') || msg.includes('casa') || msg.includes('recoge') || msg.includes('entreg')) {
-      return 'domicilio';
+    if (
+      msg.includes("domicilio") ||
+      msg.includes("casa") ||
+      msg.includes("recoge") ||
+      msg.includes("entreg")
+    ) {
+      return "domicilio";
     }
-    if (msg.includes('contacto') || msg.includes('teléfono') || msg.includes('whatsapp') || msg.includes('llamar')) {
-      return 'contacto';
+    if (
+      msg.includes("contacto") ||
+      msg.includes("teléfono") ||
+      msg.includes("whatsapp") ||
+      msg.includes("llamar")
+    ) {
+      return "contacto";
     }
-    if (msg.includes('pago') || msg.includes('pagar') || msg.includes('efectivo') || msg.includes('transferencia')) {
-      return 'pago';
+    if (
+      msg.includes("pago") ||
+      msg.includes("pagar") ||
+      msg.includes("efectivo") ||
+      msg.includes("transferencia")
+    ) {
+      return "pago";
     }
-    if (msg.includes('ropa interior') || msg.includes('medias') || msg.includes('no accept')) {
-      return 'restricciones';
+    if (
+      msg.includes("ropa interior") ||
+      msg.includes("medias") ||
+      msg.includes("no accept")
+    ) {
+      return "restricciones";
     }
-    if (msg.includes('suavizante') || msg.includes('perlas') || msg.includes('olor') || msg.includes('complement')) {
-      return 'complementos';
+    if (
+      msg.includes("suavizante") ||
+      msg.includes("perlas") ||
+      msg.includes("olor") ||
+      msg.includes("complement")
+    ) {
+      return "complementos";
     }
-    if (msg.includes('horario') || msg.includes('hora') || msg.includes('cuando') || msg.includes('abiert')) {
-      return 'horario';
+    if (
+      msg.includes("horario") ||
+      msg.includes("hora") ||
+      msg.includes("cuando") ||
+      msg.includes("abiert")
+    ) {
+      return "horario";
     }
-    
+
     return null;
   }
 
@@ -494,69 +534,71 @@ class SiloeChatbot {
   getRandomResponse(intent) {
     const responses = this.responses[intent];
     if (!responses) return null;
-    
+
     return responses[Math.floor(Math.random() * responses.length)];
   }
 
   // Limpiar respuesta de la IA
   cleanAIResponse(text) {
-    if (!text) return '';
-    
+    if (!text) return "";
+
     // Remover etiquetas de pensamiento
-    text = text.replace(/<think>.*?<\/think>/gis, '');
-    
+    text = text.replace(/<think>.*?<\/think>/gis, "");
+
     // Remover prefijos comunes
-    text = text.replace(/^(Asistente:|Cliente:|Bot:|AI:|Assistant:)/gi, '');
-    
+    text = text.replace(/^(Asistente:|Cliente:|Bot:|AI:|Assistant:)/gi, "");
+
     // Remover asteriscos y formateo markdown
-    text = text.replace(/\*\*/g, '').replace(/\*/g, '');
-    
+    text = text.replace(/\*\*/g, "").replace(/\*/g, "");
+
     // Limpiar espacios extra
     text = text.trim();
-    
+
     // Limitar longitud
     if (text.length > 200) {
-      text = text.substring(0, 200) + '...';
+      text = text.substring(0, 200) + "...";
     }
-    
+
     return text;
   }
 
+  // Método sendMessage actualizado con mejor manejo de errores
   async sendMessage() {
-    const input = document.getElementById('chatInput');
-    const sendBtn = document.getElementById('chatSend');
+    const input = document.getElementById("chatInput");
+    const sendBtn = document.getElementById("chatSend");
     const message = input.value.trim();
-    
+
     if (!message || this.isTyping) return;
 
     // Agregar mensaje del usuario
-    this.addMessage(message, 'user');
-    input.value = '';
-    
+    this.addMessage(message, "user");
+    input.value = "";
+
     // Deshabilitar input
     this.isTyping = true;
     sendBtn.disabled = true;
-    
+
     // Mostrar indicador de escritura
     this.showTyping();
 
     // Intentar respuesta local primero
     const intent = this.detectIntent(message);
     const localResponse = this.getRandomResponse(intent);
-    
+
     if (localResponse) {
       // Usar respuesta local
       setTimeout(() => {
         this.hideTyping();
-        this.addMessage(localResponse, 'bot');
+        this.addMessage(localResponse, "bot");
         this.isTyping = false;
         sendBtn.disabled = false;
         input.focus();
       }, 800); // Simular tiempo de respuesta
-      
     } else {
       // Usar IA como fallback
       try {
+        console.log("🔄 Enviando request a función Netlify...");
+
         // Crear prompt más simple y directo
         const prompt = `Eres el asistente de Lavandería Siloé en Cuba. Responde en máximo 20 palabras, de forma natural y amigable.
 
@@ -570,38 +612,80 @@ Servicios:
 Pregunta: ${message}
 Respuesta:`;
 
-        const response = await fetch('/netlify/functions/HFApiChat', {
-          method: 'POST',
+        
+        const response = await fetch("/.netlify/functions/HFApiChat", {
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            prompt: prompt
-          })
+            prompt: prompt,
+          }),
         });
 
-        const data = await response.json();
+        console.log("📥 Response status:", response.status);
+        console.log("📥 Response headers:", response.headers);
+
+        // Verificar si la respuesta es exitosa
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+
+        // Obtener el texto de respuesta
+        const responseText = await response.text();
+        console.log("📥 Response text:", responseText);
+
+        // Intentar parsear como JSON
+        let data;
+        try {
+          data = JSON.parse(responseText);
+        } catch (parseError) {
+          console.error("❌ JSON Parse Error:", parseError);
+          throw new Error(
+            `Invalid JSON response: ${responseText.substring(0, 100)}...`
+          );
+        }
 
         if (data.error) {
           throw new Error(data.error);
         }
 
         let botResponse = this.cleanAIResponse(data.text);
-        
+
         // Validar respuesta
-        if (!botResponse || botResponse.length < 5 || botResponse.includes('no puedo')) {
-          botResponse = "Para más información específica, contáctanos al +53 50108881. ¡Estaremos felices de ayudarte!";
+        if (
+          !botResponse ||
+          botResponse.length < 5 ||
+          botResponse.includes("no puedo")
+        ) {
+          botResponse =
+            "Para más información específica, contáctanos al +53 50108881. ¡Estaremos felices de ayudarte!";
         }
 
-        this.hideTyping();
-        this.addMessage(botResponse, 'bot');
+        console.log("✅ Bot response:", botResponse);
 
-      } catch (error) {
-        console.error('Error:', error);
         this.hideTyping();
-        
-        // Respuesta de fallback genérica
-        this.addMessage("¡Gracias por tu mensaje! Para más información, contáctanos al +53 50108881.", 'bot');
+        this.addMessage(botResponse, "bot");
+      } catch (error) {
+        console.error("❌ Error completo:", error);
+        this.hideTyping();
+
+        // Respuesta de fallback específica según el tipo de error
+        let fallbackMessage =
+          "¡Gracias por tu mensaje! Para más información, contáctanos al +53 50108881.";
+
+        if (error.message?.includes("405")) {
+          fallbackMessage =
+            "Estamos ajustando el sistema. Contáctanos al +53 50108881 para ayudarte mejor.";
+        } else if (error.message?.includes("JSON")) {
+          fallbackMessage =
+            "Hay un problema técnico temporal. Puedes contactarnos directamente al +53 50108881.";
+        } else if (error.message?.includes("fetch")) {
+          fallbackMessage =
+            "Error de conexión. Por favor contacta al +53 50108881 para ayudarte inmediatamente.";
+        }
+
+        this.addMessage(fallbackMessage, "bot");
       } finally {
         this.isTyping = false;
         sendBtn.disabled = false;
@@ -612,6 +696,6 @@ Respuesta:`;
 }
 
 // Inicializar el chatbot cuando el DOM esté listo
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   new SiloeChatbot();
 });

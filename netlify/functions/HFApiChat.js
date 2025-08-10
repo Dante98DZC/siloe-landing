@@ -1,3 +1,4 @@
+// netlify/functions/HFApiChat.js
 import { OpenAI } from "openai";
 
 const client = new OpenAI({
@@ -5,78 +6,98 @@ const client = new OpenAI({
   apiKey: process.env.HUGGINGFACE_TOKEN,
 });
 
-export default async function handler(req, context) {
+// IMPORTANTE: Cambiar export default por exports.handler
+export const handler = async (event, context) => {
+  console.log('🔄 Function called with method:', event.httpMethod);
+  console.log('🔄 Headers:', JSON.stringify(event.headers));
+  
   // Verificar que la API key esté configurada
   if (!process.env.HUGGINGFACE_TOKEN) {
-    return new Response(JSON.stringify({ error: 'API key not configured' }), {
-      status: 500,
+    console.log('❌ API key not configured');
+    return {
+      statusCode: 500,
       headers: {
         'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS',
         'Content-Type': 'application/json'
-      }
-    });
+      },
+      body: JSON.stringify({ error: 'API key not configured' })
+    };
   }
   
   // Manejo de CORS preflight
-  if (req.method === 'OPTIONS') {
-    return new Response('', {
-      status: 200,
+  if (event.httpMethod === 'OPTIONS') {
+    console.log('✅ CORS preflight request');
+    return {
+      statusCode: 200,
       headers: {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Headers': 'Content-Type',
         'Access-Control-Allow-Methods': 'POST, OPTIONS'
-      }
-    });
+      },
+      body: ''
+    };
   }
 
   // Validar método HTTP
-  if (req.method !== 'POST') {
-    return new Response(JSON.stringify({ error: 'Method not allowed' }), {
-      status: 405,
+  if (event.httpMethod !== 'POST') {
+    console.log('❌ Method not allowed:', event.httpMethod);
+    return {
+      statusCode: 405,
       headers: {
         'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS',
         'Content-Type': 'application/json'
-      }
-    });
+      },
+      body: JSON.stringify({ error: 'Method not allowed' })
+    };
   }
 
   try {
     // Obtener el body de la request
-    const body = await req.text();
+    const body = event.body;
+    console.log('📥 Request body:', body?.substring(0, 100) + '...');
     
     if (!body) {
-      return new Response(JSON.stringify({ error: 'Request body is required' }), {
-        status: 400,
+      return {
+        statusCode: 400,
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json'
-        }
-      });
+        },
+        body: JSON.stringify({ error: 'Request body is required' })
+      };
     }
 
     const { prompt } = JSON.parse(body);
 
     // Validar que existe el prompt
     if (!prompt || typeof prompt !== 'string') {
-      return new Response(JSON.stringify({ error: 'Prompt is required and must be a string' }), {
-        status: 400,
+      return {
+        statusCode: 400,
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json'
-        }
-      });
+        },
+        body: JSON.stringify({ error: 'Prompt is required and must be a string' })
+      };
     }
 
     // Validar longitud del prompt
     if (prompt.length > 2000) {
-      return new Response(JSON.stringify({ error: 'Prompt too long. Maximum 2000 characters.' }), {
-        status: 400,
+      return {
+        statusCode: 400,
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json'
-        }
-      });
+        },
+        body: JSON.stringify({ error: 'Prompt too long. Maximum 2000 characters.' })
+      };
     }
+
+    console.log('🤖 Processing prompt:', prompt.substring(0, 50) + '...');
 
     // Crear un prompt más controlado y específico
     const controlledPrompt = `Eres el asistente virtual de Lavandería Siloé en Holguín, Cuba.
@@ -130,55 +151,59 @@ Respuesta (máximo 25 palabras, texto plano):`;
       generated = "Para más información, contáctanos al +53 50108881. ¡Estaremos encantados de ayudarte!";
     }
 
-    return new Response(JSON.stringify({
-      text: generated,
-      model: "SmolLM3-3B-Controlled",
-      success: true,
-      wordCount: generated.split(' ').length
-    }), {
-      status: 200,
+    console.log('✅ Generated response:', generated);
+
+    return {
+      statusCode: 200,
       headers: {
         'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json'
-      }
-    });
+      },
+      body: JSON.stringify({
+        text: generated,
+        model: "SmolLM3-3B-Controlled",
+        success: true,
+        wordCount: generated.split(' ').length
+      })
+    };
 
   } catch (error) {
     console.error("❌ Error:", error);
     
     // Manejar diferentes tipos de errores
-    let status = 500;
+    let statusCode = 500;
     let errorMessage = 'Error interno del servidor';
     
     if (error.name === 'SyntaxError') {
-      status = 400;
+      statusCode = 400;
       errorMessage = 'Invalid JSON in request body';
     } else if (error.message?.includes('API key')) {
-      status = 401;
+      statusCode = 401;
       errorMessage = 'Error de autenticación';
     } else if (error.message?.includes('rate limit') || error.status === 429) {
-      status = 429;
+      statusCode = 429;
       errorMessage = 'Rate limit exceeded';
     } else if (error.status === 404) {
-      status = 404;
+      statusCode = 404;
       errorMessage = 'Model not found';
     } else if (error.status >= 400 && error.status < 500) {
-      status = error.status;
+      statusCode = error.status;
       errorMessage = 'Client error';
     }
 
-    return new Response(JSON.stringify({
-      error: errorMessage,
-      details: process.env.NODE_ENV === 'development' ? error.message : undefined
-    }), {
-      status: status,
+    return {
+      statusCode: statusCode,
       headers: {
         'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json'
-      }
-    });
+      },
+      body: JSON.stringify({
+        error: errorMessage,
+        details: process.env.NODE_ENV === 'development' ? error.message : undefined
+      })
+    };
   }
-}
+};
 
 // Función para limpiar las respuestas
 function cleanResponse(text) {
@@ -226,7 +251,6 @@ function isValidResponse(text) {
   const invalidPhrases = [
     'no puedo ayudar',
     'no entiendo',
-    'como ai',
     'como asistente',
     'no tengo información',
     'lo siento, pero',

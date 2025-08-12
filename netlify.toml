@@ -25,6 +25,11 @@
     Access-Control-Allow-Methods = "POST, OPTIONS"
     Access-Control-Allow-Headers = "Content-Type"
 
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Content-Type = "application/javascript"
+
 # Redirects para manejar rutas SPA si es necesario
 [[redirects]]
   from = "/api/chat"

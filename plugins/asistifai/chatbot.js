@@ -103,17 +103,6 @@ class SiloeChatbot {
                 <div class="welcome-message">
                     ¡Hola! Soy tu asistente virtual. ¿En qué puedo ayudarte hoy?
                 </div>
-                <div class="quick-actions">
-                    <div class="quick-action" onclick="sendQuickMessage('¿Cuáles son sus servicios?')">
-                        Servicios
-                    </div>
-                    <div class="quick-action" onclick="sendQuickMessage('¿Cuál es su horario?')">
-                        Horarios
-                    </div>
-                    <div class="quick-action" onclick="sendQuickMessage('¿Cómo puedo contactarlos?')">
-                        Contacto
-                    </div>
-                </div>
             </div>
 
             <div class="chat-input-container">

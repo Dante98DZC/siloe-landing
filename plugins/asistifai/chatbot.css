@@ -234,6 +234,7 @@
   flex: 1;
   padding: 24px;
   overflow-y: auto;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -486,51 +487,6 @@
   border-radius: var(--radius-md);
   margin-bottom: 16px;
   backdrop-filter: blur(8px);
-  box-shadow: var(--shadow-card);
-}
-
-/* Quick Actions */
-.quick-actions {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 16px;
-  overflow-x: auto;
-  padding: 0 2px 8px 0;
-  scrollbar-width: thin;
-  scrollbar-color: var(--glass-border) transparent;
-}
-
-.quick-actions::-webkit-scrollbar {
-  height: 4px;
-}
-.quick-actions::-webkit-scrollbar-track {
-  background: transparent;
-}
-.quick-actions::-webkit-scrollbar-thumb {
-  background: var(--glass-border);
-  border-radius: var(--radius-sm);
-}
-
-.quick-action {
-  background: var(--glass-bg);
-  backdrop-filter: blur(8px);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-xl);
-  padding: 8px 16px;
-  font-size: 12px;
-  color: var(--text-muted);
-  cursor: pointer;
-  transition: var(--transition-smooth);
-  white-space: nowrap;
-  flex-shrink: 0;
-  font-weight: 500;
-}
-
-.quick-action:hover {
-  border-color: var(--primary-color);
-  color: var(--primary-color);
-  transform: translateY(-1px);
-  background: var(--glass-strong);
   box-shadow: var(--shadow-card);
 }
 

@@ -12,7 +12,7 @@
       content="lavandería, lavado, servicio, Cuba, Holguín, Siloé"
     />
 
-    <link rel="icon" href="res/favicon.png" type="image/png">
+    <link rel="icon" href="res/favicon.png" type="image/png" />
     <title>Lavandería Siloé</title>
 
     <!-- Fonts -->
@@ -67,15 +67,18 @@
           <h1>Lavandería Siloé</h1>
           <div class="subtitle-container">
             <div class="rotating-text active">
-              Calidad y eficiencia en cada lavado.
+              Calidad y eficiencia en cada lavado
             </div>
             <div class="rotating-text">
               ¡Los apagones y la sequía ya no afectarán tu ropa!
             </div>
-            <div class="rotating-text">Ropa limpia sin mover un dedo.</div>
-            <div class="rotating-text">Ahorra tiempo y agua con nosotros.</div>
+            <div class="rotating-text">Ropa limpia sin mover un dedo</div>
+            <div class="rotating-text">Ahorra tiempo y agua con nosotros</div>
             <div class="rotating-text">
               ¡Increíbles ofertas con los mejores precios!
+            </div>
+            <div class="rotating-text">
+              Disfruta nuestra seleccion de Productos de Limpieza
             </div>
           </div>
           <div class="cta-container">
@@ -93,15 +96,18 @@
         <div class="section-title">
           <h2>Nuestros Servicios</h2>
           <p>
-            Servicios profesionales de lavandería con la más alta calidad y
-            atención personalizada
+            Servicios de lavandería con la mejor calidad y atención
           </p>
         </div>
 
         <div class="services-grid">
-          <!-- Servicio 1: Lavado y Secado -->
+          <!-- Servicio 1: -->
           <div class="service-card" onclick="toggleCard(this)">
-            <div class="price-tag accent">$700</div>
+            <div
+              class="price-tag accent"
+            >
+              $1000 x <i class="icon icon-basket icon-sm icon-white"></i>
+            </div>
 
             <div class="card-content">
               <!-- Cara frontal -->
@@ -130,145 +136,43 @@
                   <div class="details-list">
                     <div class="detail-item">
                       <span class="detail-label">
-                        <i class="icon icon-timer icon-md icon-white"></i>
+                        <i class="icon icon-timer icon-md"></i>
                         Tiempo
                       </span>
                       <span class="detail-value">24-48 horas</span>
                     </div>
                     <div class="detail-item">
                       <span class="detail-label">
-                        <i class="icon icon-basket icon-md icon-white"></i>
+                        <i class="icon icon-basket icon-md"></i>
                         Medida
                       </span>
-                      <span class="detail-value">Por cesto de ropa</span>
+                      <span class="detail-value">Por cesto de ropa</span
+                      ><!-- TODO: Mostrar cesto lleno -->
                     </div>
                     <div class="detail-item">
+                      <!-- TODO: aumentar prioridad visual -->
                       <span class="detail-label">
-                        <i class="icon icon-no icon-md icon-white"></i>
+                        <i class="icon icon-no icon-md"></i>
                         No aceptamos
                       </span>
                       <span class="detail-value">Ropa interior, medias</span>
                     </div>
-                  </div>
-                </div>
-                <div class="flip-indicator">← Volver</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Servicio 2: Complementos -->
-          <div class="service-card" onclick="toggleCard(this)">
-            <div class="price-tag accent">$300</div>
-
-            <div class="card-content">
-              <!-- Cara frontal -->
-              <div class="card-face card-front">
-                <div class="service-icon">
-                  <i
-                    class="icon icon-bubbles icon-3xl icon-white icon-responsive-sm"
-                  ></i>
-                </div>
-                <div class="service-content">
-                  <h3>Complementos</h3>
-                  <h4>Extras Premium</h4>
-                  <p>
-                    Mejora tu experiencia incluyendo
-                    <strong>blanqueadores</strong>,
-                    <strong>suavizantes</strong> y
-                    <strong>perlas de olor</strong> para un acabado premium.
-                  </p>
-                </div>
-                <div class="flip-indicator">Ver detalles →</div>
-              </div>
-
-              <!-- Cara trasera -->
-              <div class="card-face card-back">
-                <div class="service-details">
-                  <h3>Productos Premium</h3>
-                  <div class="details-list">
                     <div class="detail-item">
                       <span class="detail-label">
-                        <i class="icon icon-diamond icon-md icon-white"></i>
-                        Blanqueadores
+                        <i class="icon icon-bottle icon-md"></i>
+                        Aditivos
                       </span>
-                      <span class="detail-value">Ropa blanca impecable</span>
-                    </div>
-                    <div class="detail-item">
-                      <span class="detail-label">
-                        <i class="icon icon-bottle icon-md icon-white"></i>
-                        Suavizantes
-                      </span>
-                      <span class="detail-value">Texturas suaves al tacto</span>
-                    </div>
-                    <div class="detail-item">
-                      <span class="detail-label">
-                        <i class="icon icon-sparkles icon-md icon-white"></i>
-                        Perlas de olor
-                      </span>
-                      <span class="detail-value">Fragancias duraderas</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="flip-indicator">← Volver</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Servicio 3: Servicio a Domicilio -->
-          <div class="service-card" onclick="toggleCard(this)">
-            <div class="card-content">
-              <!-- Cara frontal -->
-              <div class="card-face card-front">
-                <div class="service-icon">
-                  <i
-                    class="icon icon-truck icon-3xl icon-white icon-responsive-sm"
-                  ></i>
-                </div>
-                <div class="service-content">
-                  <h3>Servicio a Domicilio</h3>
-                  <h4>Comodidad Total</h4>
-                  <p>
-                    Recogemos y entregamos tus prendas en la puerta de tu casa.
-                    Coordinamos contigo el horario más conveniente.
-                  </p>
-                </div>
-                <div class="flip-indicator">Ver detalles →</div>
-              </div>
-
-              <!-- Cara trasera -->
-              <div class="card-face card-back">
-                <div class="service-details">
-                  <h3>Servicio a Domicilio</h3>
-                  <div class="details-list">
-                    <div class="detail-item">
-                      <span class="detail-label"
-                        ><i
-                          class="icon icon-clipboard-clock icon-md icon-white"
-                        ></i>
-                        Horarios</span
-                      >
-                      <span class="detail-value">8:00AM - 6:00PM</span>
-                    </div>
-                    <div class="detail-item">
-                      <span class="detail-label"
-                        ><i
-                          class="icon icon-headset icon-md icon-white icon-test"
-                        ></i>
-                        Coordinacion</span
-                      >
                       <span class="detail-value"
-                        >A traves de WhatsApp o Llamada</span
+                        >Suavizante, Blanqueador, Perlas ...</span
                       >
                     </div>
                     <div class="detail-item">
-                      <span class="detail-label"
-                        ><i
-                          class="icon icon-dollar-sign icon-md icon-white"
-                        ></i>
-                        Precios</span
-                      >
+                      <span class="detail-label">
+                        <i class="icon icon-truck icon-md"></i>
+                        Domicilio
+                      </span>
                       <span class="detail-value"
-                        >En dependencia de la distancia</span
+                        >Servicio de recogida y entrega</span
                       >
                     </div>
                   </div>
@@ -300,6 +204,7 @@
           <img src="res/5.jpg" alt="Misc" class="gallery-image" />
           <img src="res/6.jpg" alt="Misc" class="gallery-image" />
           <img src="res/7.jpg" alt="Misc" class="gallery-image" />
+          <img src="res/8.jpg" alt="Misc" class="gallery-image" />
 
           <button class="gallery-nav prev" onclick="previousImage()">‹</button>
           <button class="gallery-nav next" onclick="nextImage()">›</button>
@@ -312,6 +217,7 @@
             <div class="gallery-dot" onclick="currentImage(5)"></div>
             <div class="gallery-dot" onclick="currentImage(6)"></div>
             <div class="gallery-dot" onclick="currentImage(7)"></div>
+            <div class="gallery-dot" onclick="currentImage(8)"></div>
           </div>
         </div>
       </div>

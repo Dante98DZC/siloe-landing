@@ -2,42 +2,41 @@
        CSS Custom Properties (Variables)
     ========================================= */
 :root {
-  /* Enhanced Color Palette */
-  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-  --success-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  /* Enhanced Color Palette - Lavandería Profesional */
+  --primary-gradient: linear-gradient(135deg, #4A90E2 0%, #67B5E8 100%);
+  --secondary-gradient: linear-gradient(135deg, #85C7F2 0%, #A8D8F0 100%);
+  --accent-gradient: linear-gradient(135deg, #7FCDCD 0%, #9FE2E2 100%);
+  --success-gradient: linear-gradient(135deg, #7ED6A8 0%, #A5E6C3 100%);
   --glass-gradient: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.1),
-    rgba(255, 255, 255, 0.05)
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0.7)
   );
 
   /* Primary Colors */
-  --primary-color: #667eea;
-  --secondary-color: #43e97b;
-  --accent-color: #f093fb;
-  --highlight-color: #4facfe;
+  --primary-color: #4A90E2;
+  --secondary-color: #7ED6A8;
+  --accent-color: #85C7F2;
+  --highlight-color: #7FCDCD;
 
   /* Background Colors */
-  --background-color: #0f0f23;
-  --background-alt-color: #1a1a2e;
-  --surface-color: #16213e;
+  --background-color: #F8FAFB;
+  --background-alt-color: #EFF4F7;
+  --surface-color: #FFFFFF;
   --white-color: #ffffff;
-  --glass-bg: rgba(255, 255, 255, 0.08);
-  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-bg: rgba(255, 255, 255, 0.95);
+  --glass-border: rgba(74, 144, 226, 0.15);
 
   /* Text Colors */
-  --text-color: #ffffff;
-  --text-muted: #a0aec0;
-  --text-dark: #2d3748;
+  --text-color: #2C3E50;
+  --text-muted: #7B8A99;
+  --text-dark: #1A202C;
 
   /* Effects */
-  --shadow-glow: 0 0 30px rgba(102, 126, 234, 0.3);
-  --shadow-strong: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-  --shadow-card: 0 10px 25px rgba(0, 0, 0, 0.2);
-  --shadow-hover: 0 5px 10px rgba(102, 126, 234, 0.4);
-
+  --shadow-glow: 0 0 30px rgba(74, 144, 226, 0.15);
+  --shadow-strong: 0 25px 50px -12px rgba(74, 144, 226, 0.08);
+  --shadow-card: 0 10px 25px rgba(74, 144, 226, 0.06);
+  --shadow-hover: 0 5px 10px rgba(74, 144, 226, 0.2);
   /* Typography */
   --font-primary: "Inter", system-ui, -apple-system, sans-serif;
   --font-display: "Playfair Display", serif;
@@ -62,6 +61,9 @@
   --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   --transition-fast: all 0.2s ease-out;
+
+  --navbar-height: 80px;
+  --navbar-height-scrolled: 60px;
 }
 
 /* ========================================
@@ -164,21 +166,29 @@ img {
     ========================================= */
 .navbar {
   position: fixed;
+  overflow: hidden;
+  align-content: center;
+  height: var(--navbar-height);
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  padding: var(--spacing-md) 0;
   transition: var(--transition-smooth);
-  backdrop-filter: blur(20px);
-  background: rgba(15, 15, 35, 0.8);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px rgba(74, 144, 226, 0.08);
 }
 
 .navbar.scrolled {
-  padding: var(--spacing-sm) 0;
-  background: rgba(15, 15, 35, 0.95);
-  box-shadow: var(--shadow-strong);
+  height: var(--navbar-height-scrolled);
+  background: rgba(255, 255, 255, 0.95);
+  -webkit-backdrop-filter: blur(25px) saturate(200%);
+  backdrop-filter: blur(25px) saturate(200%);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-strong), 
+              0 4px 16px rgba(74, 144, 226, 0.12);
 }
 
 .nav-container {
@@ -261,6 +271,7 @@ img {
     ========================================= */
 .hero {
   min-height: 100vh;
+  padding-top: calc(var(--navbar-height) + var(--spacing-2xl));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -486,7 +497,7 @@ img {
 
 .section-title {
   text-align: center;
-  margin-bottom: var(--spacing-3xl);
+  margin-bottom: var(--spacing-lg);
 }
 
 .section-title h2 {
@@ -512,10 +523,15 @@ img {
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: var(--spacing-xl);
   margin-top: var(--spacing-2xl);
+  justify-items: center;
+  align-items: center;
 }
 
 .service-card {
-  height: 400px;
+  height: 450px;
+  width: 100%;
+  min-width: 260px;
+  max-width: 420px;
   border-radius: var(--radius-md);
   position: relative;
   cursor: pointer;
@@ -525,6 +541,7 @@ img {
   transition: var(--transition-smooth);
   perspective: 1000px;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .service-card::before {
@@ -657,13 +674,15 @@ img {
 /* Etiqueta de precio */
 .price-tag {
   position: absolute;
+  display: flex;
+  align-items: center;
   top: 15px;
   right: 15px;
   background: var(--success-gradient);
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 20px;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 1rem;
   z-index: 10;
   box-shadow: var(--shadow-card);

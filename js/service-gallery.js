@@ -12,7 +12,7 @@ class ServiceGallery {
 
   init() {
     this.renderGallery();
-    this.setupControls();
+    // this.setupControls();
     this.startAutoPlay();
   }
 
@@ -32,8 +32,6 @@ class ServiceGallery {
 
     // Agregar controles de navegación
     galleryContainer.innerHTML += `
-      <button class="gallery-nav prev" aria-label="Anterior">❮</button>
-      <button class="gallery-nav next" aria-label="Siguiente">❯</button>
       <div class="gallery-dots">
         ${this.images.map((_, i) => `
           <span class="gallery-dot ${i === 0 ? 'active' : ''}" data-index="${i}"></span>

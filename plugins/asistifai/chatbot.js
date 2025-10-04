@@ -87,7 +87,7 @@ class SiloeChatbot {
         <div class="chat-window" id="chatWindow">
             <div class="chat-header">
                 <div class="chat-header-info">
-                    <div class="chat-avatar">S</div>
+                    <div class="chat-avatar"> <img src="res/LogoSiloe.png" alt="Siloé" /></div>
                     <div>
                         <div class="chat-title">Asistente Siloé</div>
                         <div class="chat-status">

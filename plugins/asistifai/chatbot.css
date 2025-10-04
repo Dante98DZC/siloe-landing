@@ -205,7 +205,7 @@
 }
 
 .chat-close {
-  background: var(--glass-bg);
+  background: var(--primary-color);
   backdrop-filter: blur(8px);
   border: 1px solid var(--glass-border);
   color: var(--white-color);

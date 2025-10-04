@@ -253,11 +253,11 @@ window.addEventListener("beforeunload", function () {
 });
 
 // Add click handlers for gallery images to open modal
-document.addEventListener("DOMContentLoaded", function () {
-  document.querySelectorAll(".gallery-image").forEach((img) => {
-    img.addEventListener("click", function () {
-      openModal(this.src);
-    });
-    img.style.cursor = "pointer";
-  });
-});
+// document.addEventListener("DOMContentLoaded", function () {
+//   document.querySelectorAll(".gallery-image").forEach((img) => {
+//     img.addEventListener("click", function () {
+//       openModal(this.src);
+//     });
+//     img.style.cursor = "pointer";
+//   });
+// });

@@ -1,0 +1,126 @@
+/* Estilos para la galería dentro de la tarjeta de servicio */
+.service-gallery {
+  position: relative;
+width: 100%;
+height: 100%;
+  margin: 0;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.service-gallery-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.service-gallery .gallery-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  border-radius: var(--border-radius);
+}
+
+.service-gallery .gallery-image.active {
+  opacity: 1;
+}
+
+.service-gallery .gallery-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--glass-bg);
+  border: none;
+  color: var(--text-color);
+  font-size: 1.5rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.service-gallery .gallery-nav:hover {
+  background: var(--primary-gradient);
+  color: var(--white-color);
+}
+
+.service-gallery .gallery-nav.prev {
+  left: 0.5rem;
+}
+
+.service-gallery .gallery-nav.next {
+  right: 0.5rem;
+}
+
+.service-gallery .gallery-dots {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  z-index: 2;
+}
+
+.service-gallery .gallery-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  background: var(--glass-bg);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.service-gallery .gallery-dot.active {
+  background: var(--accent-color);
+  transform: scale(1.2);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .service-gallery {
+    height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .service-gallery {
+    height: 120px;
+  }
+
+  .service-gallery .gallery-nav {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 1rem;
+  }
+}

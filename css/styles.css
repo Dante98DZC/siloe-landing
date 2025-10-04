@@ -528,10 +528,13 @@ img {
 }
 
 .service-card {
-  height: 500px;
+  height: 550px;
   width: 100%;
   min-width: 260px;
   max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border-radius: var(--radius-md);
   position: relative;
   cursor: pointer;

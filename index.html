@@ -95,17 +95,13 @@
       <div class="container">
         <div class="section-title">
           <h2>Nuestros Servicios</h2>
-          <p>
-            Servicios de lavandería con la mejor calidad y atención
-          </p>
+          <p>Servicios de lavandería con la mejor calidad y atención</p>
         </div>
 
         <div class="services-grid">
           <!-- Servicio 1: -->
-          <div class="service-card" onclick="toggleCard(this)">
-            <div
-              class="price-tag accent"
-            >
+          <div class="service-card">
+            <div class="price-tag accent">
               $1000 x <i class="icon icon-basket icon-sm icon-white"></i>
             </div>
 
@@ -125,8 +121,19 @@
                     por el volumen de ropa, según la cantidad de cestos que esta
                     ocupe.
                   </p>
+                  <div
+                    class="service-gallery"
+                    data-images="/res/1.jpg,/res/2.jpg,/res/3.jpg"
+                  >
+                    <!-- La galería se generará automáticamente aquí -->
+                  </div>
                 </div>
-                <div class="flip-indicator">Ver detalles →</div>
+                <div
+                  class="flip-indicator"
+                  onclick="toggleCard(this.closest('.service-card'))"
+                >
+                  Ver detalles →
+                </div>
               </div>
 
               <!-- Cara trasera -->
@@ -155,7 +162,9 @@
                         <i class="icon icon-no icon-md"></i>
                         No aceptamos
                       </span>
-                      <span class="detail-value">Ropa interior, medias o prendas muy pequeñas</span>
+                      <span class="detail-value"
+                        >Ropa interior, medias o prendas muy pequeñas</span
+                      >
                     </div>
                     <div class="detail-item">
                       <span class="detail-label">
@@ -177,7 +186,12 @@
                     </div>
                   </div>
                 </div>
-                <div class="flip-indicator">← Volver</div>
+                <div
+                  class="flip-indicator"
+                  onclick="toggleCard(this.closest('.service-card'))"
+                >
+                  ← Volver
+                </div>
               </div>
             </div>
           </div>
@@ -186,7 +200,7 @@
     </section>
 
     <!-- Gallery Section -->
-    <section class="gallery-section fade-in">
+    <!-- <section class="gallery-section fade-in">
       <div class="container">
         <div class="section-title">
           <h2>Nuestras Instalaciones</h2>
@@ -223,7 +237,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- FAQ Section -->
     <section class="faq-section fade-in" id="FAQ">
@@ -243,7 +257,7 @@
                 Calculamos el precio del servicio por el volumen de ropa. Según
                 la cantidad de cestos que esta ocupe
                 <strong>sin empujar ni doblar la ropa</strong>. Cada cesto
-                tendrá un precio de $700.
+                tendrá un precio de $1000.
               </div>
             </div>
           </div>
@@ -493,7 +507,9 @@
         <img id="modalImage" src="" alt="Imagen ampliada" />
       </div>
     </div>
-    <!-- <script src="plugins/asistifai/chatbot.js"></script> -->
-    <!-- <link rel="stylesheet" href="plugins/asistifai/chatbot.css" /> -->
+    <link rel="stylesheet" href="css/service-gallery.css" />
+    <script src="js/service-gallery.js"></script>
+    <!-- <script src="plugins/asistifai/chatbot.js"></script>
+    <link rel="stylesheet" href="plugins/asistifai/chatbot.css" /> -->
   </body>
 </html>

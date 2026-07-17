@@ -1415,41 +1415,61 @@ img {
 /* Responsive para la sección de normas */
 @media (max-width: 768px) {
   .normas li {
+    display: grid;
+    grid-template-columns: auto 1fr;
     padding: var(--spacing-lg);
     gap: var(--spacing-md);
-    flex-direction: column;
-  }
-
-  .normas li strong {
-    min-width: auto;
   }
 
   .normas li::before {
     width: 28px;
     height: 28px;
     font-size: 0.85rem;
+    grid-column: 1;
+    grid-row: 1;
   }
 
   .normas li strong {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+    min-width: auto;
     font-size: 1rem;
   }
 
   .normas li p {
+    grid-column: 1 / -1;
+    grid-row: 2;
     font-size: 0.9rem;
+    margin-top: var(--spacing-md);
   }
 }
 
 @media (max-width: 480px) {
   .normas li {
+    display: grid;
+    grid-template-columns: auto 1fr;
     padding: var(--spacing-md);
     gap: var(--spacing-sm);
-    flex-direction: column;
   }
 
   .normas li::before {
     width: 24px;
     height: 24px;
     font-size: 0.8rem;
-    align-self: flex-start;
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .normas li strong {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+  }
+
+  .normas li p {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    margin-top: var(--spacing-sm);
   }
 }

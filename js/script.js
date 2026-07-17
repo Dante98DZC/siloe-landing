@@ -131,13 +131,13 @@ function nextImage() {
 
   if (images.length === 0) return;
 
-  images[currentSlide].classList.remove("active");
-  dots[currentSlide].classList.remove("active");
+  if (images[currentSlide]) images[currentSlide].classList.remove("active");
+  if (dots[currentSlide]) dots[currentSlide].classList.remove("active");
 
   currentSlide = (currentSlide + 1) % images.length;
 
-  images[currentSlide].classList.add("active");
-  dots[currentSlide].classList.add("active");
+  if (images[currentSlide]) images[currentSlide].classList.add("active");
+  if (dots[currentSlide]) dots[currentSlide].classList.add("active");
 }
 
 function previousImage() {
@@ -146,13 +146,13 @@ function previousImage() {
 
   if (images.length === 0) return;
 
-  images[currentSlide].classList.remove("active");
-  dots[currentSlide].classList.remove("active");
+  if (images[currentSlide]) images[currentSlide].classList.remove("active");
+  if (dots[currentSlide]) dots[currentSlide].classList.remove("active");
 
   currentSlide = (currentSlide - 1 + images.length) % images.length;
 
-  images[currentSlide].classList.add("active");
-  dots[currentSlide].classList.add("active");
+  if (images[currentSlide]) images[currentSlide].classList.add("active");
+  if (dots[currentSlide]) dots[currentSlide].classList.add("active");
 }
 
 function currentImage(n) {
@@ -161,13 +161,13 @@ function currentImage(n) {
 
   if (images.length === 0) return;
 
-  images[currentSlide].classList.remove("active");
-  dots[currentSlide].classList.remove("active");
+  if (images[currentSlide]) images[currentSlide].classList.remove("active");
+  if (dots[currentSlide]) dots[currentSlide].classList.remove("active");
 
   currentSlide = n - 1;
 
-  images[currentSlide].classList.add("active");
-  dots[currentSlide].classList.add("active");
+  if (images[currentSlide]) images[currentSlide].classList.add("active");
+  if (dots[currentSlide]) dots[currentSlide].classList.add("active");
 }
 
 // FAQ functionality
